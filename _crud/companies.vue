@@ -50,7 +50,7 @@ export default {
           requestParams: {},
         },
         update: {
-            title: 'Edit station'
+            title: 'Update companies'
         },
         delete: true,
         create: false,

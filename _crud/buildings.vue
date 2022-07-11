@@ -52,10 +52,10 @@ export default {
           requestParams: {include: "company,station"},
         },
         create: {
-          title: 'New buildings'
+          title: 'Create buildings'
         },
         update: {
-          title: 'Edit buildings'
+          title: 'Update buildings'
         },
         delete: true,
         formLeft: {

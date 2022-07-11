@@ -46,10 +46,10 @@ export default {
           requestParams: {include: 'airport'},
         },
         create: {
-          title: 'New station'
+          title: 'Create station'
         },
         update: {
-          title: 'Edit station'
+          title: 'Update companies'
         },
         delete: true,
         formLeft: {
