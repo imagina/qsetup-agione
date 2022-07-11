@@ -7,7 +7,7 @@ export default {
       return {
         //permission: 'setup.buildings.manage',
         crudId: this.$uid(),
-        //entityName: config("main.qsetupagione.entityNames.companies"),
+        //entityName: config("main.qsetupagione.entityNames.buildings"),
         apiRoute: "apiRoutes.qsetupagione.setupBuildings",
         read: {
           columns: [
