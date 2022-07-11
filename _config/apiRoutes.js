@@ -6,10 +6,11 @@ const flightModuleName = 'flight';
 const flightUrlBase = `/${flightModuleName}/${moduleVersion}`
 
 export default {
-  urlBase : urlBase,
+  urlBase: urlBase,
   version: moduleVersion,
   setupCompanies: `${urlBase}/companies`,
   setupBuildings: `${urlBase}/buildings`,
   setupStations: `${urlBase}/stations`,
   airports: `${flightUrlBase}/airports`,
+  contractRules: `${urlBase}/contract-rules`
 }

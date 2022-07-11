@@ -41,4 +41,19 @@ export default {
       refresh: true,
     }
   },
+  contractRules: {
+    permission: 'setup.contract-rules.manage',
+    activated: true,
+    authenticated: true,
+    path: '/setup/contract-rules',
+    name: 'qsetupagione.admin.contract-rules',
+    crud: import('@imagina/qsetupagione/_crud/contractRules'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'setupagione.cms.sidebar.contractRules',
+    icon: 'fas fa-tasks',
+    subHeader: {
+      refresh: true,
+    }
+  },
 }
