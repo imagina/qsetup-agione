@@ -1,0 +1,139 @@
+<template>
+    
+</template>
+<script>
+export default {
+  computed: {
+    crudData() {
+      return {
+        crudId: this.$uid(),
+        apiRoute: "apiRoutes.qsetupagione.setupCustomers",
+        read: {
+          columns: [
+            {
+              name: "id",
+              label: this.$tr("isite.cms.form.id"),
+              field: "id",
+              style: "width: 50px",
+            },
+            {
+              name: "customerName",
+              label: "Customer Name",
+              field: "customerName",
+              align: "left",
+            },
+            {
+              name: "workdayId",
+              label: "Workday Id",
+              field: "workdayId",
+              align: "left",
+            },
+            {
+              name: "customerStatus",
+              label: "Customer Status",
+              field: "customerStatus",
+              format: val => val ? val.statusName : '',
+              align: "left",
+            },
+            {
+              name: "airline",
+              label: "Airline",
+              field: "airline",
+              format: val => val ? val.airlineName : '',
+              align: "left",
+            },
+            {
+              name: "adHocWorkOrders",
+              label: "ad Hoc Work Orders",
+              field: "adHocWorkOrders",
+              format: val => val ? 'yes':'no',
+              align: "left",
+            },
+            
+            {
+              name: "actions",
+              label: this.$tr("isite.cms.form.actions"),
+              align: "left",
+            },
+          ],
+          requestParams: {include: "customerStatus,airline"},
+        },
+        create: false,
+        update: {
+          title: 'Update customer'
+        },
+        delete: true,
+        formLeft: {
+          customerName: {
+            name:'customerName',
+            value: '',
+            type: 'input',
+            props: {
+              rules: [
+                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+              ],
+              readonly: true,
+              label: 'Customer',
+              clearable: true,
+              color:"primary",
+              'hide-bottom-space': false
+            },
+            label: 'Customer Name',
+          },
+          workdayId: {
+            name:'workdayId',
+            value: '',
+            type: 'input',
+            props: {
+              rules: [
+                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+              ],
+              readonly: true,
+              label: 'WorkdayId',
+              clearable: true,
+              color:"primary",
+              'hide-bottom-space': false
+            },
+            label: 'workday Id',
+          },
+          customerStatusId: {
+            value: '',
+            type: 'select',
+            props: {
+              label: 'Status',
+            },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qsetupagione.customerStatuses',
+              select: {label: 'statusName', id: 'id'},
+              requestParams: {refresh: true}
+            }
+          },
+          airlineId: {
+            value: '',
+            type: 'select',
+            props: {
+              label: 'Airline',
+            },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qsetupagione.airlines',
+              select: {label: 'airlineName', id: 'id'},
+              requestParams: {refresh: true}
+            }
+          },
+          adHocWorkOrders: {
+            value:'',
+            type: 'select',
+            props: {
+              label: 'adHocWorkOrders',
+              options: [
+                {value: true, label: false},
+                {value: false, label: true},
+              ]
+            },
+          },
+        },
+      };
+    },
+  },
+};
+</script>

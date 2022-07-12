@@ -12,5 +12,8 @@ export default {
   setupBuildings: `${urlBase}/buildings`,
   setupStations: `${urlBase}/stations`,
   airports: `${flightUrlBase}/airports`,
-  contractRules: `${urlBase}/contract-rules`
+  contractRules: `${urlBase}/contract-rules`,
+  setupCustomers: `${urlBase}/customers`,
+  customerStatuses: `${urlBase}/customer-statuses`,
+  airlines: `${flightUrlBase}/airlines`
 }
