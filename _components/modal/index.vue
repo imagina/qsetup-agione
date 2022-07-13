@@ -11,16 +11,19 @@
       :maximized="$q.screen.lt.md"
     >
       <basicData />
+      <contractLineTable />
     </master-modal>
   </div>
 </template>
 <script>
 import qSetupStore from "@imagina/qsetupagione/_store/qSetupStore.js";
 import basicData from '@imagina/qsetupagione/_components/modal/basicData.vue';
+import contractLineTable from '@imagina/qsetupagione/_components/modal/contractLineTable.vue';
 
 export default {
   components: {
-    basicData
+    basicData,
+    contractLineTable
   },
   computed: {
     visibleContract: {
@@ -42,6 +45,7 @@ export default {
     hideVisibleContract() {
       qSetupStore().hideVisibleContract();
       qSetupStore().resetBasicDataContract();
+      qSetupStore().setContractLineList([]);
     },
   },
 };

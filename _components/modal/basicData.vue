@@ -1,5 +1,5 @@
 <template>
-  <div class="q-py-lg">
+  <div class="q-py-lg q-pa-md">
     <q-card class="my-card">
       <q-card-section>
         <div class="row q-px-md">
