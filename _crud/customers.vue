@@ -3,7 +3,7 @@
 </template>
 <script>
 import qSetupStore from '@imagina/qsetupagione/_store/qSetupStore.js';
-import modalContract from '@imagina/qsetupagione/_components/modalContract.vue';
+import modalContract from '@imagina/qsetupagione/_components/modal/index.vue';
 
 export default {
   components:{
