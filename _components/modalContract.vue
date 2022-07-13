@@ -5,7 +5,7 @@
       v-model="visibleContract"
       v-bind="modalProps"
       :persistent="true"
-      :loading="Loading"
+      :loading="modalLoadingContract"
       @hide="hideVisibleContract"
       :width="'90vw'"
       :maximized="$q.screen.lt.md"
@@ -65,7 +65,7 @@ export default {
     basicDataContract() {
       return qSetupStore().getBasicDataContract();
     },
-    Loading() {
+    modalLoadingContract() {
       return qSetupStore().getModalLoadingContract();
     },
   },

@@ -43,18 +43,17 @@ export default function qSetupStore() {
         return state.modalProps;
     }
     function showBasicDataContract(contractId) {
+        showModalLoadingContract();
         baseService.show('apiRoutes.qsetupagione.contracts', contractId,
-            {
-                refresh: true,
-            })
-            .then(async (item) => {
-                await showModalLoadingContract();
-                await setBasicDataContract(item.data);
-                await hideModalLoadingContract();
-            }).catch((err) => {
-                hideModalLoadingContract();
-                console.log(err);
-            });
+         {
+            refresh: true,
+         }).then((item) => {
+            setBasicDataContract(item.data);
+            hideModalLoadingContract();
+        }).catch((err) => {
+            hideModalLoadingContract();
+            console.log(err);
+        });
     }
     function setBasicDataContract(data) {
         state.basicDataContract = data;
@@ -73,7 +72,7 @@ export default function qSetupStore() {
     }
     function showModalLoadingContract() {
         state.modalLoadingContract = true;
-    }
+    } 
     function resetBasicDataContract() {
         state.basicDataContract = {...modelContract};
     }
