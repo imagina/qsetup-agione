@@ -43,7 +43,7 @@ export default {
               name: "adHocWorkOrders",
               label: "ad Hoc Work Orders",
               field: "adHocWorkOrders",
-              format: (val) => (val ? "yes" : "no"),
+              format: (val) => (val ? "Yes" : "No"),
               align: "left",
             },
             {
@@ -123,14 +123,6 @@ export default {
                   // open modal
                 },
               },
-              {
-                name: "edit",
-                icon: "fas fa-pen",
-                label: this.$tr("isite.cms.label.edit"),
-                action: (item) => {
-                  // open modal
-                },
-              },
             ],
           },
         },
@@ -140,6 +132,9 @@ export default {
         },
         delete: true,
         formLeft: {
+          id: {
+            value: null,
+          }, 
           customerName: {
             name: "customerName",
             value: "",

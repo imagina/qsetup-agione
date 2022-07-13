@@ -53,6 +53,9 @@ export default {
         },
         delete: true,
         formLeft: {
+          id: {
+            value: null,
+          },
           stationName: {
             name:'stationName',
             value: '',
