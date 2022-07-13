@@ -15,5 +15,6 @@ export default {
   contractRules: `${urlBase}/contract-rules`,
   setupCustomers: `${urlBase}/customers`,
   customerStatuses: `${urlBase}/customer-statuses`,
-  airlines: `${flightUrlBase}/airlines`
+  airlines: `${flightUrlBase}/airlines`,
+  contracts: `${urlBase}/contracts`
 }

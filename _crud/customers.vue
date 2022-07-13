@@ -1,6 +1,3 @@
-<template>
-    
-</template>
 <script>
 export default {
   computed: {
@@ -32,103 +29,165 @@ export default {
               name: "customerStatus",
               label: "Customer Status",
               field: "customerStatus",
-              format: val => val ? val.statusName : '',
+              format: (val) => (val ? val.statusName : ""),
               align: "left",
             },
             {
               name: "airline",
               label: "Airline",
               field: "airline",
-              format: val => val ? val.airlineName : '',
+              format: (val) => (val ? val.airlineName : ""),
               align: "left",
             },
             {
               name: "adHocWorkOrders",
               label: "ad Hoc Work Orders",
               field: "adHocWorkOrders",
-              format: val => val ? 'yes':'no',
+              format: (val) => (val ? "yes" : "no"),
               align: "left",
             },
-            
             {
               name: "actions",
               label: this.$tr("isite.cms.form.actions"),
               align: "left",
             },
           ],
-          requestParams: {include: "customerStatus,airline"},
+          requestParams: { include: "customerStatus,airline" },
+          relation: {
+            apiRoute: "apiRoutes.qsetupagione.contracts",
+            requestParams: (row) => ({
+              //filter: {customerId: row.id},
+              include: "contractType,contractStatus,costCenter",
+            }),
+            columns: [
+              {
+                name: "Id",
+                label: "ID",
+                field: "id",
+              },
+              {
+                name: "contractName",
+                label: "Name",
+                field: "contractName",
+              },
+              {
+                name: "customerName",
+                label: "customer",
+                field: "customer",
+                format: (val) => val?.customerName || "-",
+              },
+              {
+                name: "costCenter",
+                label: "Cost Center",
+                field: "costCenter",
+                format: (val) => val?.name || "-",
+              },
+              {
+                name: "workdayId",
+                label: "Workday Id",
+                field: "workdayId",
+              },
+              {
+                name: "contractStatus",
+                label: "Status",
+                field: "contractStatus",
+                format: (val) => val?.statusName || "-",
+              },
+              {
+                name: "contractType",
+                label: "Type",
+                field: "contractType",
+                format: (val) => val?.typeName || "-",
+              },
+              {
+                name: "actions",
+                label: this.$tr("isite.cms.form.actions"),
+                align: "left",
+              },
+            ],
+            actions: [
+              {
+                name: "show",
+                icon: "fas fa-eye",
+                label: this.$tr("isite.cms.label.show"),
+                action: (item) => {
+                  // open modal
+                },
+              },
+            ],
+          },
         },
         create: false,
         update: {
-          title: 'Update customer'
+          title: "Update customer",
         },
         delete: true,
         formLeft: {
           customerName: {
-            name:'customerName',
-            value: '',
-            type: 'input',
+            name: "customerName",
+            value: "",
+            type: "input",
             props: {
               rules: [
-                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+                (val) => !!val || this.$tr("isite.cms.message.fieldRequired"),
               ],
               readonly: true,
-              label: 'Customer',
+              label: "Customer",
               clearable: true,
-              color:"primary",
-              'hide-bottom-space': false
+              color: "primary",
+              "hide-bottom-space": false,
             },
-            label: 'Customer Name',
+            label: "Customer Name",
           },
           workdayId: {
-            name:'workdayId',
-            value: '',
-            type: 'input',
+            name: "workdayId",
+            value: "",
+            type: "input",
             props: {
               rules: [
-                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+                (val) => !!val || this.$tr("isite.cms.message.fieldRequired"),
               ],
               readonly: true,
-              label: 'WorkdayId',
+              label: "WorkdayId",
               clearable: true,
-              color:"primary",
-              'hide-bottom-space': false
+              color: "primary",
+              "hide-bottom-space": false,
             },
-            label: 'workday Id',
+            label: "workday Id",
           },
           customerStatusId: {
-            value: '',
-            type: 'select',
+            value: "",
+            type: "select",
             props: {
-              label: 'Status',
+              label: "Status",
             },
             loadOptions: {
-              apiRoute: 'apiRoutes.qsetupagione.customerStatuses',
-              select: {label: 'statusName', id: 'id'},
-              requestParams: {refresh: true}
-            }
+              apiRoute: "apiRoutes.qsetupagione.customerStatuses",
+              select: { label: "statusName", id: "id" },
+              requestParams: { refresh: true },
+            },
           },
           airlineId: {
-            value: '',
-            type: 'select',
+            value: "",
+            type: "select",
             props: {
-              label: 'Airline',
+              label: "Airline",
             },
             loadOptions: {
-              apiRoute: 'apiRoutes.qsetupagione.airlines',
-              select: {label: 'airlineName', id: 'id'},
-              requestParams: {refresh: true}
-            }
+              apiRoute: "apiRoutes.qsetupagione.airlines",
+              select: { label: "airlineName", id: "id" },
+              requestParams: { refresh: true },
+            },
           },
           adHocWorkOrders: {
-            value:'',
-            type: 'select',
+            value: "",
+            type: "select",
             props: {
-              label: 'adHocWorkOrders',
+              label: "adHocWorkOrders",
               options: [
-                {value: true, label: false},
-                {value: false, label: true},
-              ]
+                { value: true, label: false },
+                { value: false, label: true },
+              ],
             },
           },
         },
