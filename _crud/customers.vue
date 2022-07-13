@@ -54,9 +54,10 @@ export default {
           ],
           requestParams: { include: "customerStatus,airline" },
           relation: {
+            label: 'Contracts',
             apiRoute: "apiRoutes.qsetupagione.contracts",
             requestParams: (row) => ({
-              //filter: {customerId: row.id},
+              filter: {customerId: row.id},
               include: "contractType,contractStatus,costCenter",
             }),
             columns: [
@@ -64,44 +65,52 @@ export default {
                 name: "Id",
                 label: "ID",
                 field: "id",
+                align: "left",
               },
               {
                 name: "contractName",
                 label: "Name",
                 field: "contractName",
+                align: "left",
               },
               {
                 name: "customerName",
-                label: "customer",
+                label: "Customer",
                 field: "customer",
                 format: (val) => val?.customerName || "-",
+                align: "left",
               },
               {
                 name: "costCenter",
                 label: "Cost Center",
                 field: "costCenter",
                 format: (val) => val?.name || "-",
+                align: "left",
               },
               {
                 name: "workdayId",
                 label: "Workday Id",
                 field: "workdayId",
+                align: "left",
               },
               {
                 name: "contractStatus",
                 label: "Status",
                 field: "contractStatus",
                 format: (val) => val?.statusName || "-",
+                align: "left",
               },
               {
                 name: "contractType",
                 label: "Type",
                 field: "contractType",
                 format: (val) => val?.typeName || "-",
+                align: "left",
               },
               {
                 name: "actions",
                 label: this.$tr("isite.cms.form.actions"),
+                align: "left",
                 align: "left",
               },
             ],
@@ -110,6 +119,14 @@ export default {
                 name: "show",
                 icon: "fas fa-eye",
                 label: this.$tr("isite.cms.label.show"),
+                action: (item) => {
+                  // open modal
+                },
+              },
+              {
+                name: "edit",
+                icon: "fas fa-pen",
+                label: this.$tr("isite.cms.label.edit"),
                 action: (item) => {
                   // open modal
                 },
