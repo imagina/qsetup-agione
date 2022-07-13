@@ -47,6 +47,9 @@ export default function qSetupStore() {
         baseService.show('apiRoutes.qsetupagione.contracts', contractId,
          {
             refresh: true,
+            params: {
+                include: "contractLines,contractType,contractStatus,costCenter"
+            }
          }).then((item) => {
             setBasicDataContract(item.data);
             hideModalLoadingContract();
