@@ -74,6 +74,9 @@ export default function qSetupStore() {
     function showModalLoadingContract() {
         state.modalLoadingContract = true;
     }
+    function resetBasicDataContract() {
+        state.basicDataContract = {...modelContract};
+    }
     return {
         hideVisibleContract,
         showVisibleContract,
@@ -87,5 +90,6 @@ export default function qSetupStore() {
         showModalLoadingContract,
         getModalLoadingContract,
         setBasicDataContract,
+        resetBasicDataContract,
     }
 }

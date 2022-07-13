@@ -72,9 +72,7 @@ export default {
   methods: {
     hideVisibleContract() {
       qSetupStore().hideVisibleContract();
-    },
-    validateDataBasic(data) {
-      return data || null;
+      qSetupStore().resetBasicDataContract();
     },
   },
 };
