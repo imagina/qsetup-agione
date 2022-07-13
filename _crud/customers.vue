@@ -1,5 +1,14 @@
+<template>
+    <modalContract />
+</template>
 <script>
+import qSetupStore from '@imagina/qsetupagione/_store/qSetupStore.js';
+import modalContract from '@imagina/qsetupagione/_components/modalContract.vue';
+
 export default {
+  components:{
+    modalContract
+  },
   computed: {
     crudData() {
       return {
@@ -120,7 +129,12 @@ export default {
                 icon: "fas fa-eye",
                 label: this.$tr("isite.cms.label.show"),
                 action: (item) => {
-                  // open modal
+                  qSetupStore().showVisibleContract();
+                  qSetupStore().setModalProps({
+                    title: `Contract: ${item.contractName}`,
+                    update: false
+                  });
+                  qSetupStore().showBasicDataContract(item.id);
                 },
               },
             ],
