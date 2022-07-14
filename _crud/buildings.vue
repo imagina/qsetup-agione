@@ -98,7 +98,7 @@ export default {
           workdayLocationId: {
             value: null,
           },
-          workdayWId: {
+          workdayWid: {
             value: null,
           },
           oldId: {
