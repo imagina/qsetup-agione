@@ -4,6 +4,7 @@
       id="modalComponent"
       v-model="visibleContract"
       v-bind="modalProps"
+      custom-position
       :persistent="true"
       :loading="modalLoadingContract"
       @hide="hideVisibleContract"

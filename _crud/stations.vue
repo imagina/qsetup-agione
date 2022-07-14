@@ -21,7 +21,6 @@ export default {
               name: "stationName",
               label: "Station Name",
               field: "stationName",
-              field: 'workOrderStatus',
               align: "left",
             },
             {

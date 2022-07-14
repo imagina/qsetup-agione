@@ -1,5 +1,6 @@
 export default {
   companies: {
+    permission: 'setup.companies.manage',
     activated: true,
     authenticated: true,
     path: '/setup/companies',
@@ -8,12 +9,13 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.companies',
-    icon: 'fas fa-briefcase',
+    icon: 'fas fa-building',
     subHeader: {
       refresh: true,
     }
   },
   stations: {
+    permission: 'setup.stations.manage',
     activated: true,
     authenticated: true,
     path: '/setup/stations',
@@ -22,12 +24,13 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.stations',
-    icon: 'fas fa-briefcase',
+    icon: 'fas fa-building',
     subHeader: {
       refresh: true,
     }
   },
   buildings: {
+    permission: 'setup.buildings.manage',
     activated: true,
     authenticated: true,
     path: '/setup/buildings',
@@ -36,7 +39,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.buildings',
-    icon: 'fas fa-briefcase',
+    icon: 'fas fa-building',
     subHeader: {
       refresh: true,
     }
@@ -66,7 +69,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.customers',
-    icon: 'fas fa-tasks',
+    icon: 'fas fa-users',
     subHeader: {
       refresh: true,
     }
