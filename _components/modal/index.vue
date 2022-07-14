@@ -48,6 +48,7 @@ export default {
     customCrudData() {
       return { 
         read: {
+          searchAction: false,
           requestParams: {
             include:"contract,product",
             filter: {
