@@ -116,6 +116,21 @@ export default {
               requestParams: {refresh: true}
             }
           },
+          workdayLocationId: {
+            value: null,
+          },
+          workdayWId: {
+            value: null,
+          },
+          oldId: {
+            value: null,
+          },
+          externalId: {
+            value: null,
+          },
+          options: {
+            value: null,
+          },                  
         },
       };
     },

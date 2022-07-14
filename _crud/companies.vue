@@ -88,6 +88,21 @@ export default {
             },
             label: 'Company code',
           },
+          workdayCode : {
+            value: null,
+          },
+          workdayWid: {
+            value: null,
+          },
+          oldId: {
+            value: null,
+          },
+          externalId: {
+            value: null,
+          },
+          options: {
+            value: null,
+          },
         },
       };
     },
