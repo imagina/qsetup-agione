@@ -37,7 +37,6 @@
              v-if="action.vIf != undefined ? action.vIf : true"/>
       <inner-loading :visible="loading"/>
     </div>
-    <pre>{{ form }}</pre>
   </div>
 </template>
 <script>
