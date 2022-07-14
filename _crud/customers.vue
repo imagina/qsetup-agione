@@ -206,13 +206,13 @@ export default {
             },
           },
           adHocWorkOrders: {
-            value: "",
+            value: "false",
             type: "select",
             props: {
               label: "adHocWorkOrders",
               options: [
-                { value: true, label: false },
-                { value: false, label: true },
+                { id: 0, value:'false', label: 'false' },
+                { id: 1, value:'true', label: 'true' },
               ],
             },
           },
