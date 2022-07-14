@@ -31,12 +31,6 @@ export default {
               align: "left",
             },
             {
-              name: "address",
-              label: "Address",
-              field: "address",
-              align: "left",
-            },
-            {
               name: "companyName",
               label: "Company Name",
               field: "company",
@@ -88,21 +82,6 @@ export default {
               select: {label: 'stationName', id: 'id'},
               requestParams: {refresh: true}
             }
-          },
-          address: {
-            name:'address',
-            value: '',
-            type: 'input',
-            props: {
-              rules: [
-                val => !!val || this.$tr('isite.cms.message.fieldRequired')
-              ],
-              label: 'Address',
-              clearable: true,
-              color:"primary",
-              'hide-bottom-space': false
-            },
-            label: 'Address',
           },
           companyId: {
             value: '',
