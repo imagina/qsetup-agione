@@ -1,7 +1,6 @@
 <template>
   <div>
     <q-form ref="ruleForm" id="ruleForm">
-
       <dynamic-field
           key="contractRuleType"
           id="contractRuleType"
@@ -47,6 +46,7 @@ import parking from '@imagina/qsetupagione/_components/contractRules/parking.vue
 import aircraftType from '@imagina/qsetupagione/_components/contractRules/aircraftType.vue'
 import operationType from '@imagina/qsetupagione/_components/contractRules/operationType.vue'
 import cargoKilos from '@imagina/qsetupagione/_components/contractRules/cargoKilos.vue'
+import qSetupStore from "@imagina/qsetupagione/_store/qSetupStore.js"; 
 
 export default {
   beforeDestroy() {
@@ -56,7 +56,6 @@ export default {
     value: {default: true},
     update: {default: false},
     row: {default: false},
-    contractId: {default: null},
   },
   components: {
     included,
@@ -103,24 +102,6 @@ export default {
         },
 
       },
-      contractField: {
-        name: 'contractId',
-        value: this.contractId,
-        type: 'select',
-        props: {
-          rules: [
-            val => !!val && !GLOBAL_RULES.includes(this.form.type) || this.$tr('isite.cms.message.fieldRequired')
-          ],
-          label: 'Contract',
-          clearable: true,
-          color: "primary"
-        },
-        loadOptions: {
-          apiRoute: 'apiRoutes.qsetupagione.contracts',
-          select: {label: 'contractName', id: 'id'},
-          requestParams: {filter: {}}
-        }
-      },
       type: {
         name: 'type',
         value: null,
@@ -141,6 +122,27 @@ export default {
     }
   },
   computed: {
+    contractField() {
+      return {
+          name: 'contractId',
+          value: this.contractId,
+          type: 'select',
+          props: {
+            rules: [
+              val => !!val && !GLOBAL_RULES.includes(this.form.type) || this.$tr('isite.cms.message.fieldRequired')
+            ],
+            label: 'Contract',
+            clearable: true,
+            color: "primary",
+            readonly: this.contractId === 0 ? false : true
+          },
+          loadOptions: {
+            apiRoute: 'apiRoutes.qsetupagione.contracts',
+            select: {label: 'contractName', id: 'id'},
+            requestParams: {filter: {}}
+          }
+      }
+    },
     ruleComponent() {
 
       let component = this.type.props.options.find(opt => (opt.value == this.form.type))
@@ -148,7 +150,9 @@ export default {
       return null;
 
     },
-
+    contractId() {
+      return qSetupStore().getContractId();
+    },
     //Step actions
     formActions() {
       //Validate if is last step
@@ -183,6 +187,7 @@ export default {
         this.form.options = dataToUpdate.options;
       }
       if (this.contractId) this.form.contractId = this.$clone(this.contractId)
+      console.log(this.contractId);
       //this.getData()
     },
 
@@ -219,7 +224,6 @@ export default {
                 })
 
           }else{
-            console.warn("asdasdasd")
             this.loading = false;
             this.$emit('loading', false)
           }

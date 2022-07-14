@@ -22,6 +22,7 @@ const state = reactive({
     basicDataContract: {...modelContract},
     modalLoadingContract: false,
     contractLineList: [],
+    contractId: 0,
 });
 
 export default function qSetupStore() {
@@ -87,6 +88,12 @@ export default function qSetupStore() {
     function getContractLineList() {
         return state.contractLineList;
     }
+    function getContractId() {
+        return state.contractId;
+    }
+    function setContractId(contractId) {
+        state.contractId = contractId;
+    }
     return {
         hideVisibleContract,
         showVisibleContract,
@@ -103,5 +110,7 @@ export default function qSetupStore() {
         resetBasicDataContract,
         setContractLineList,
         getContractLineList,
+        getContractId,
+        setContractId,
     }
 }

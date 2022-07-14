@@ -13,6 +13,10 @@
     >
       <basicData />
       <contractLineTable />
+      <crud 
+        :crud-data="import('@imagina/qsetupagione/_crud/contractRules.vue')"
+        :customData="customCrudData"
+      />
     </master-modal>
   </div>
 </template>
@@ -41,12 +45,26 @@ export default {
     modalLoadingContract() {
       return qSetupStore().getModalLoadingContract();
     },
+    customCrudData() {
+      return { 
+        read: {
+          requestParams: {
+            include:"contract,product",
+            filter: {
+              contractId: qSetupStore().getContractId(),
+            }
+          },
+          filters: {}
+        }
+      }
+    },
   },
   methods: {
     hideVisibleContract() {
       qSetupStore().hideVisibleContract();
       qSetupStore().resetBasicDataContract();
       qSetupStore().setContractLineList([]);
+      qSetupStore().setContractId(0);
     },
   },
 };

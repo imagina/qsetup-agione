@@ -134,6 +134,7 @@ export default {
                     title: `Contract: ${item.contractName}`,
                     update: false
                   });
+                  qSetupStore().setContractId(item.id);
                   qSetupStore().showBasicDataContract(item.id);
                 },
               },
