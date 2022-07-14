@@ -56,4 +56,19 @@ export default {
       refresh: true,
     }
   },
+  customers: {
+    permission: 'setup.customers.manage',
+    activated: true,
+    authenticated: true,
+    path: '/setup/customers',
+    name: 'qsetupagione.admin.customers',
+    crud: import('@imagina/qsetupagione/_crud/customers'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'isetup.cms.sidebar.customers',
+    icon: 'fas fa-tasks',
+    subHeader: {
+      refresh: true,
+    }
+  },
 }

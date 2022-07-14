@@ -59,6 +59,9 @@ export default {
         },
         delete: true,
         formLeft: {
+          id: {
+            value: null,
+          },
           buildingName: {
             name:'buildingName',
             value: '',

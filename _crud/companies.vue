@@ -55,6 +55,9 @@ export default {
         delete: true,
         create: false,
         formLeft: {
+          id: {
+            value: null,
+          },
           companyName: {
             name:'companyName',
             value: '',

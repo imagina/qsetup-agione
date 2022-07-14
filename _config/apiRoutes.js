@@ -12,7 +12,10 @@ export default {
   setupBuildings: `${urlBase}/buildings`,
   setupStations: `${urlBase}/stations`,
   airports: `${flightUrlBase}/airports`,
-  contracts: `${urlBase}/contracts`,
+  contractRules: `${urlBase}/contract-rules`,
   contractLines: `${urlBase}/contract-lines`,
-  contractRules: `${urlBase}/contract-rules`
+  setupCustomers: `${urlBase}/customers`,
+  customerStatuses: `${urlBase}/customer-statuses`,
+  airlines: `${flightUrlBase}/airlines`,
+  contracts: `${urlBase}/contracts`
 }
