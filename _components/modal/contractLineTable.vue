@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <q-table
-      title="Contract Line"
+      title="Contract Lines"
       :data="tableData"
       :columns="columns"
       row-key="name"
