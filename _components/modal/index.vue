@@ -16,6 +16,7 @@
       <crud 
         :crud-data="import('@imagina/qsetupagione/_crud/contractRules.vue')"
         :customData="customCrudData"
+        title="Contract rules"
       />
     </master-modal>
   </div>
