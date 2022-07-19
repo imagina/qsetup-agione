@@ -109,7 +109,7 @@ export default {
             value: "",
             type: "select",
             props: {
-              label: "Status",
+              label: "building",
             },
             loadOptions: {
               apiRoute: "apiRoutes.qsetupagione.setupBuildings",
@@ -121,7 +121,7 @@ export default {
             value: "",
             type: "select",
             props: {
-              label: "Status",
+              label: "company",
             },
             loadOptions: {
               apiRoute: "apiRoutes.qsetupagione.setupCompanies",
@@ -133,11 +133,11 @@ export default {
             value: "",
             type: "select",
             props: {
-              label: "businessUnitTypeId",
+              label: "Business Unit Type",
             },
             loadOptions: {
-              apiRoute: "apiRoutes.qsetupagione.workOrderStatuses",
-              select: { label: "statusName", id: "id" },
+              apiRoute: "apiRoutes.qsetupagione.businessUnitTypes",
+              select: { label: "unitTypeName", id: "id" },
               requestParams: { refresh: true },
             },
           },
