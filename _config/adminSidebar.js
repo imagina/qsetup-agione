@@ -8,7 +8,8 @@ export default [
       pages.qsetupagione.stations,
       pages.qsetupagione.buildings,
       pages.qsetupagione.contractRules,
-      pages.qsetupagione.customers
+      pages.qsetupagione.customers,
+      pages.qsetupagione.costCenters
     ]
   },
 ]

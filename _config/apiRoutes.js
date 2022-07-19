@@ -17,5 +17,6 @@ export default {
   setupCustomers: `${urlBase}/customers`,
   customerStatuses: `${urlBase}/customer-statuses`,
   airlines: `${flightUrlBase}/airlines`,
-  contracts: `${urlBase}/contracts`
+  contracts: `${urlBase}/contracts`,
+  setupCostCenters: `${urlBase}/cost-centers`
 }

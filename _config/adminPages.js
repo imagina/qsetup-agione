@@ -74,4 +74,19 @@ export default {
       refresh: true,
     }
   },
+  costCenters: {
+    permission: 'setup.cost-centers.manage',
+    activated: true,
+    authenticated: true,
+    path: '/setup/cost-centers',
+    name: 'qsetupagione.admin.costCenters',
+    crud: import('@imagina/qsetupagione/_crud/costCenters'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'isetup.cms.sidebar.costCenters',
+    icon: 'fas fa-users',
+    subHeader: {
+      refresh: true,
+    }
+  },
 }
