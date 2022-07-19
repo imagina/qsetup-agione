@@ -90,6 +90,18 @@ export default {
             },
             label: 'workDay Id',
           },
+          workDayWid: {
+            value: null,
+          },
+          buildingId: {
+            value: null,
+          },
+          companyId: {
+            value: null,
+          },
+          businessUnitTypeId: {
+            value: null,
+          },
           oldId: {
             value: null,
           },
