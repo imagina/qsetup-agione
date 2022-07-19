@@ -5,6 +5,9 @@ const urlBase = `/${moduleName}/${moduleVersion}`
 const flightModuleName = 'flight';
 const flightUrlBase = `/${flightModuleName}/${moduleVersion}`
 
+const rampModuleName = 'ramp';
+const rampUrlBase = `/${rampModuleName}/${moduleVersion}`
+
 export default {
   urlBase: urlBase,
   version: moduleVersion,
@@ -18,5 +21,6 @@ export default {
   customerStatuses: `${urlBase}/customer-statuses`,
   airlines: `${flightUrlBase}/airlines`,
   contracts: `${urlBase}/contracts`,
-  setupCostCenters: `${urlBase}/cost-centers`
+  setupCostCenters: `${urlBase}/cost-centers`,
+  workOrderStatuses: `${rampUrlBase}/work-order-statuses`
 }

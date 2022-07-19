@@ -91,16 +91,55 @@ export default {
             label: 'workDay Id',
           },
           workDayWid: {
-            value: null,
+            name: "workDayWid",
+            value: '',
+            type: 'input',
+            props: {
+              rules: [
+                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+              ],
+              label: 'workDayWid',
+              clearable: true,
+              color:"primary",
+              'hide-bottom-space': false
+            },
+            label: 'Building Name',
           },
           buildingId: {
-            value: null,
+            value: "",
+            type: "select",
+            props: {
+              label: "Status",
+            },
+            loadOptions: {
+              apiRoute: "apiRoutes.qsetupagione.setupBuildings",
+              select: { label: "buildingName", id: "id" },
+              requestParams: { refresh: true },
+            },
           },
           companyId: {
-            value: null,
+            value: "",
+            type: "select",
+            props: {
+              label: "Status",
+            },
+            loadOptions: {
+              apiRoute: "apiRoutes.qsetupagione.setupCompanies",
+              select: { label: "companyName", id: "id" },
+              requestParams: { refresh: true },
+            },
           },
           businessUnitTypeId: {
-            value: null,
+            value: "",
+            type: "select",
+            props: {
+              label: "businessUnitTypeId",
+            },
+            loadOptions: {
+              apiRoute: "apiRoutes.qsetupagione.workOrderStatuses",
+              select: { label: "statusName", id: "id" },
+              requestParams: { refresh: true },
+            },
           },
           oldId: {
             value: null,
