@@ -1,5 +1,5 @@
 <template>
-  <master-modal v-model="form.show" :loading="loading"  custom-position :title="form.title">
+  <master-modal v-model="form.show" :loading="loading"  custom-position :title="form.title" :persistent="true">
     <form-contract-form @close="closeModal" :row="form.data" :update="form.update"/>
   </master-modal>
 </template>
