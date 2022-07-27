@@ -29,7 +29,7 @@
   </div>
 </template>
 <script>
-import qSetupStore from "@imagina/qsetupagione/_store/qSetupStore.js";
+import qSetupStore from "../../_store/qSetupStore.js";
 
 export default {
   computed: {

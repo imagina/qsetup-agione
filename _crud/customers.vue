@@ -2,8 +2,8 @@
     <modalContract />
 </template>
 <script>
-import qSetupStore from '@imagina/qsetupagione/_store/qSetupStore.js';
-import modalContract from '@imagina/qsetupagione/_components/modal/index.vue';
+import qSetupStore from '../_store/qSetupStore.js';
+import modalContract from '../_components/modal/index.vue';
 
 export default {
   components:{
@@ -199,7 +199,7 @@ export default {
             type: 'crud',
             props: {
               crudType: 'select',
-              crudData: import('@imagina/qfly/_crud/airline'),
+              crudData: import('src/modules/qfly/_crud/airline'),
               crudProps: {
                 label: 'Airline',
               },

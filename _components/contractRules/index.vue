@@ -40,13 +40,13 @@
 </template>
 <script>
 
-import {RULE_TYPES, GLOBAL_RULES} from '@imagina/qsetupagione/_components/model/constants'
-import included from '@imagina/qsetupagione/_components/contractRules/included.vue'
-import parking from '@imagina/qsetupagione/_components/contractRules/parking.vue'
-import aircraftType from '@imagina/qsetupagione/_components/contractRules/aircraftType.vue'
-import operationType from '@imagina/qsetupagione/_components/contractRules/operationType.vue'
-import cargoKilos from '@imagina/qsetupagione/_components/contractRules/cargoKilos.vue'
-import qSetupStore from "@imagina/qsetupagione/_store/qSetupStore.js"; 
+import {RULE_TYPES, GLOBAL_RULES} from '../../_components/model/constants'
+import included from '../../_components/contractRules/included.vue'
+import parking from '../../_components/contractRules/parking.vue'
+import aircraftType from '../../_components/contractRules/aircraftType.vue'
+import operationType from '../../_components/contractRules/operationType.vue'
+import cargoKilos from '../../_components/contractRules/cargoKilos.vue'
+import qSetupStore from "../../_store/qSetupStore.js";
 
 export default {
   beforeDestroy() {

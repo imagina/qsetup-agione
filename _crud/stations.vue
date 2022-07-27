@@ -90,7 +90,7 @@ export default {
             type: 'crud',
             props: {
               crudType: 'select',
-              crudData: import('@imagina/qfly/_crud/airport'),
+              crudData: import('../../qfly/_crud/airport'),
               crudProps: {
                 label: 'Airport Name',
               },

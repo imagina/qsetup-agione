@@ -5,8 +5,8 @@
 </template>
 <script>
 //components
-import formContractForm from "@imagina/qsetupagione/_components/contractRules/index"
-import {RULE_TYPES} from '@imagina/qsetupagione/_components/model/constants'
+import formContractForm from "../_components/contractRules/index"
+import {RULE_TYPES} from '../_components/model/constants'
 
 export default {
   components: {formContractForm},

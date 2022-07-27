@@ -14,7 +14,7 @@
       <basicData />
       <contractLineTable />
       <crud 
-        :crud-data="import('@imagina/qsetupagione/_crud/contractRules.vue')"
+        :crud-data="import('../../_crud/contractRules.vue')"
         :customData="customCrudData"
         title="Contract rules"
       />
@@ -22,9 +22,9 @@
   </div>
 </template>
 <script>
-import qSetupStore from "@imagina/qsetupagione/_store/qSetupStore.js";
-import basicData from '@imagina/qsetupagione/_components/modal/basicData.vue';
-import contractLineTable from '@imagina/qsetupagione/_components/modal/contractLineTable.vue';
+import qSetupStore from "../../_store/qSetupStore.js";
+import basicData from '../../_components/modal/basicData.vue';
+import contractLineTable from '../../_components/modal/contractLineTable.vue';
 
 export default {
   components: {

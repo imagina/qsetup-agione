@@ -110,7 +110,7 @@ export default {
             type: 'crud',
             props: {
               crudType: 'select',
-              crudData: import('@imagina/qsetupagione/_crud/stations'),
+              crudData: import('../_crud/stations'),
               crudProps: {
                 label: 'Station Name',
               },
@@ -122,7 +122,7 @@ export default {
             type: 'crud',
             props: {
               crudType: 'select',
-              crudData: import('@imagina/qsetupagione/_crud/companies'),
+              crudData: import('../_crud/companies'),
               crudProps: {
                 label: 'Company Name',
               },
