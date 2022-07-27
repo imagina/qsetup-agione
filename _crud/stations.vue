@@ -86,16 +86,16 @@ export default {
             label: 'Station Code',
           },
           airportId: {
-            value: '',
-            type: 'select',
+            value: null,
+            type: 'crud',
             props: {
-              label: 'Airport Name',
+              crudType: 'select',
+              crudData: import('@imagina/qfly/_crud/airport'),
+              crudProps: {
+                label: 'Airport Name',
+              },
+              config: {options: {label: 'airportName', value: 'id'}},
             },
-            loadOptions: {
-              apiRoute: 'apiRoutes.qsetupagione.airports',
-              select: {label: 'airportName', id: 'id'},
-              requestParams: {refresh: true}
-            }
           },
         },
       };

@@ -106,28 +106,28 @@ export default {
             label: 'Workday ID',
           },
           stationId: {
-            value: '',
-            type: 'select',
+            value: null,
+            type: 'crud',
             props: {
-              label: 'Station Name',
+              crudType: 'select',
+              crudData: import('@imagina/qsetupagione/_crud/stations'),
+              crudProps: {
+                label: 'Station Name',
+              },
+              config: {options: {label: 'stationName', value: 'id'}},
             },
-            loadOptions: {
-              apiRoute: 'apiRoutes.qsetupagione.setupStations',
-              select: {label: 'stationName', id: 'id'},
-              requestParams: {refresh: true}
-            }
           },
           companyId: {
-            value: '',
-            type: 'select',
+            value: null,
+            type: 'crud',
             props: {
-              label: 'Company Name',
+              crudType: 'select',
+              crudData: import('@imagina/qsetupagione/_crud/companies'),
+              crudProps: {
+                label: 'Company Name',
+              },
+              config: {options: {label: 'companyName', value: 'id'}},
             },
-            loadOptions: {
-              apiRoute: 'apiRoutes.qsetupagione.setupCompanies',
-              select: {label: 'companyName', id: 'id'},
-              requestParams: {refresh: true}
-            }
           },
           oldId: {
             value: null,

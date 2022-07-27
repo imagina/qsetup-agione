@@ -195,15 +195,15 @@ export default {
             },
           },
           airlineId: {
-            value: "",
-            type: "select",
+            value: null,
+            type: 'crud',
             props: {
-              label: "Airline",
-            },
-            loadOptions: {
-              apiRoute: "apiRoutes.qsetupagione.airlines",
-              select: { label: "airlineName", id: "id" },
-              requestParams: { refresh: true },
+              crudType: 'select',
+              crudData: import('@imagina/qfly/_crud/airline'),
+              crudProps: {
+                label: 'Airline',
+              },
+              config: {options: {label: 'airlineName', value: 'id'}},
             },
           },
           adHocWorkOrders: {

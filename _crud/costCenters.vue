@@ -106,27 +106,27 @@ export default {
             label: 'Building Name',
           },
           buildingId: {
-            value: "",
-            type: "select",
+            value: null,
+            type: 'crud',
             props: {
-              label: "building",
-            },
-            loadOptions: {
-              apiRoute: "apiRoutes.qsetupagione.setupBuildings",
-              select: { label: "buildingName", id: "id" },
-              requestParams: { refresh: true },
+              crudType: 'select',
+              crudData: import('@imagina/qsetupagione/_crud/buildings'),
+              crudProps: {
+                label: 'building',
+              },
+              config: {options: {label: 'buildingName', value: 'id'}},
             },
           },
           companyId: {
-            value: "",
-            type: "select",
+            value: null,
+            type: 'crud',
             props: {
-              label: "company",
-            },
-            loadOptions: {
-              apiRoute: "apiRoutes.qsetupagione.setupCompanies",
-              select: { label: "companyName", id: "id" },
-              requestParams: { refresh: true },
+              crudType: 'select',
+              crudData: import('@imagina/qsetupagione/_crud/companies'),
+              crudProps: {
+                label: 'company',
+              },
+              config: {options: {label: 'companyName', value: 'id'}},
             },
           },
           businessUnitTypeId: {
