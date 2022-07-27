@@ -24,6 +24,12 @@ export default {
               align: "left",
             },
             {
+              name: "workdayLocationId",
+              label: "Location Ref ID",
+              field: "workdayLocationId",
+              align: "left",
+            },
+            {
               name: "StationName",
               label: "Station Name",
               field: "station",
@@ -70,6 +76,34 @@ export default {
               'hide-bottom-space': false
             },
             label: 'Building Name',
+          },
+          workdayLocationId: {
+            name:'workdayLocationId',
+            value: '',
+            type: 'input',
+            props: {
+              rules: [
+                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+              ],
+              label: 'Location Ref ID',
+              clearable: true,
+              color:"primary",
+              'hide-bottom-space': false
+            },
+            label: 'Location Ref ID',
+          },
+
+          workdayWid: {
+            name:'workdayWid',
+            value: '',
+            type: 'input',
+            props: {
+              label: 'Workday ID',
+              clearable: true,
+              color:"primary",
+              'hide-bottom-space': false
+            },
+            label: 'Workday ID',
           },
           stationId: {
             value: '',
