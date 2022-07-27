@@ -129,12 +129,6 @@ export default {
               requestParams: {refresh: true}
             }
           },
-          workdayLocationId: {
-            value: null,
-          },
-          workdayWid: {
-            value: null,
-          },
           oldId: {
             value: null,
           },
