@@ -9,7 +9,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.companies',
-    icon: 'fas fa-building',
+    icon: 'fal fa-building',
     subHeader: {
       refresh: true,
     }
@@ -24,7 +24,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.stations',
-    icon: 'fas fa-building',
+    icon: 'fal fa-building',
     subHeader: {
       refresh: true,
     }
@@ -39,7 +39,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.buildings',
-    icon: 'fas fa-building',
+    icon: 'fal fa-building',
     subHeader: {
       refresh: true,
     }
@@ -54,7 +54,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'setupagione.cms.sidebar.contractRules',
-    icon: 'fas fa-tasks',
+    icon: 'fal fa-tasks',
     subHeader: {
       refresh: true,
     }
@@ -69,7 +69,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.customers',
-    icon: 'fas fa-users',
+    icon: 'fal fa-users',
     subHeader: {
       refresh: true,
     }
@@ -84,7 +84,7 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.costCenters',
-    icon: 'fas fa-users',
+    icon: 'fal fa-users',
     subHeader: {
       refresh: true,
     }
