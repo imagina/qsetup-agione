@@ -22,5 +22,6 @@ export default {
   airlines: `${flightUrlBase}/airlines`,
   contracts: `${urlBase}/contracts`,
   setupCostCenters: `${urlBase}/cost-centers`,
-  businessUnitTypes: `${urlBase}/business-unit-types`
+  businessUnitTypes: `${urlBase}/business-unit-types`,
+  gates: `${urlBase}/gates`,
 }
