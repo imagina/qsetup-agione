@@ -84,7 +84,22 @@ export default {
     page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
     layout: () => import('@imagina/qsite/_layouts/master.vue'),
     title: 'isetup.cms.sidebar.costCenters',
-    icon: 'fal fa-users',
+    icon: 'fal fa-building',
+    subHeader: {
+      refresh: true,
+    }
+  },
+  gates: {
+    permission: 'setup.gates.manage',
+    activated: true,
+    authenticated: true,
+    path: '/setup/parking-spots',
+    name: 'qsetupagione.admin.gates',
+    crud: import('../_crud/gates'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'isetup.cms.sidebar.gates',
+    icon: 'fal fa-warehouse',
     subHeader: {
       refresh: true,
     }
