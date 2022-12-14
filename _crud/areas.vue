@@ -59,7 +59,7 @@ export default {
             value: null,
           },
           name: {
-            name:'stationName',
+            name:'name',
             value: '',
             type: 'input',
             props: {
