@@ -24,4 +24,5 @@ export default {
   setupCostCenters: `${urlBase}/cost-centers`,
   businessUnitTypes: `${urlBase}/business-unit-types`,
   gates: `${urlBase}/gates`,
+  areas: `${urlBase}/areas`,
 }

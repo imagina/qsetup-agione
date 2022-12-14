@@ -104,4 +104,19 @@ export default {
       refresh: true,
     }
   },
+  areas: {
+    //permission: 'setup.areas.manage',
+    activated: true,
+    authenticated: true,
+    path: '/setup/areas',
+    name: 'qsetupagione.admin.areas',
+    crud: import('../_crud/areas'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'isetup.cms.sidebar.areas',
+    icon: 'fa-light fa-chart-area',
+    subHeader: {
+      refresh: true,
+    }
+  }
 }

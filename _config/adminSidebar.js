@@ -10,7 +10,8 @@ export default [
       pages.qsetupagione.contractRules,
       pages.qsetupagione.customers,
       pages.qsetupagione.costCenters,
-      pages.qsetupagione.gates
+      pages.qsetupagione.gates,
+      pages.qsetupagione.areas,
     ]
   },
 ]
