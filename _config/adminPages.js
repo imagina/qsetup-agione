@@ -105,7 +105,7 @@ export default {
     }
   },
   areas: {
-    //permission: 'setup.areas.manage',
+    permission: 'setup.areas.manage',
     activated: true,
     authenticated: true,
     path: '/setup/areas',
