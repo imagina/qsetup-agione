@@ -53,7 +53,7 @@ export default {
             title: 'Update companies'
         },
         delete: true,
-        create: false,
+        create: true,
         formLeft: {
           id: {
             value: null,
@@ -89,10 +89,34 @@ export default {
             label: 'Company code',
           },
           workdayCode : {
-            value: null,
+            name:'workdayCode',
+            value: '',
+            type: 'input',
+            props: {
+              rules: [
+                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+              ],
+              label: 'Workday code',
+              clearable: true,
+              color:"primary",
+              'hide-bottom-space': false
+            },
+            label: 'Workday code',
           },
           workdayWid: {
-            value: null,
+            name:'workdayWid',
+            value: '',
+            type: 'input',
+            props: {
+              rules: [
+                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+              ],
+              label: 'Workday Wid',
+              clearable: true,
+              color:"primary",
+              'hide-bottom-space': false
+            },
+            label: 'Workday Wid',
           },
           oldId: {
             value: null,
