@@ -25,4 +25,5 @@ export default {
   businessUnitTypes: `${urlBase}/business-unit-types`,
   gates: `${urlBase}/gates`,
   areas: `${urlBase}/areas`,
+  passengerCarrierStations: `${urlBase}/passenger-carrier-stations`
 }

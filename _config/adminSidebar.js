@@ -12,6 +12,7 @@ export default [
       pages.qsetupagione.costCenters,
       pages.qsetupagione.gates,
       pages.qsetupagione.areas,
+      pages.qsetupagione.passengerCarrierStations,
     ]
   },
 ]

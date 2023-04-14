@@ -118,5 +118,19 @@ export default {
     subHeader: {
       refresh: true,
     }
-  }
+  },
+  passengerCarrierStations: {
+    activated: true,
+    authenticated: true,
+    path: '/setup/passengerCarrierStations',
+    name: 'qsetupagione.admin.passengerCarrierStations',
+    crud: import('../_crud/passengerCarrierStation'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'isetup.cms.sidebar.passengerCarrierStations',
+    icon: 'fal fa-building',
+    subHeader: {
+      refresh: true,
+    }
+  },
 }
