@@ -97,6 +97,22 @@ export default {
               config: {options: {label: 'airportName', value: 'id'}},
             },
           },
+          companyId: {
+            value: null,
+            type: 'select',
+            props: {
+              rules: [
+                val => !!val || this.$tr('isite.cms.message.fieldRequired')
+              ],
+              label: 'Company',
+              clearable: true,
+            },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qsetupagione.setupCompanies',
+              select: {label: 'companyName', id: 'id'},
+              requestParams: {filter: {}}
+            }
+          }
         },
       };
     },

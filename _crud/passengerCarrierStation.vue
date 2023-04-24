@@ -49,36 +49,28 @@ export default {
             value: null,
           },
           stationId: {
-              value: null,
-              type: 'select',
-              loadOptions: {
-                apiRoute: 'apiRoutes.qsetupagione.setupStations',
-                select: { 'label': 'fullName', 'id': 'id' },
-                requestParams: {
-                  filter: {
-                    companyId: 30,
-                  },
-                },
+            value: null,
+            type: 'crud',
+            props: {
+              crudType: 'select',
+              crudData: import('../_crud/stations'),
+              crudProps: {
+                label: 'Station Name',
               },
-              props: {
-                label: 'Station',
-                'clearable': true
-              },
+              config: {options: {label: 'stationName', value: 'id'}},
+            },
           },
           airlineId: {
-              value: null,
-              type: 'select',
-              props: {
-                label: 'Carrier',
+            value: null,
+            type: 'crud',
+            props: {
+              crudType: 'select',
+              crudData: import('src/modules/qfly/_crud/airline'),
+              crudProps: {
+                label: 'Airline',
               },
-              loadOptions: {
-                apiRoute: 'apiRoutes.qfly.airlines',
-                select: {
-                  label:'airlineName',
-                  id: 'id'
-                },
-                refresh: true,
-              }
+              config: {options: {label: 'airlineName', value: 'id'}},
+            },
           },
         },
       };
