@@ -23,17 +23,16 @@ export default {
               align: "left",
             },
             {
-              name: "Airline Name",
+              name: "airlineName",
               label: "Airline Name",
               field: "airline",
               format: val => val ? val.airlineName : '' ,
               align: "left",
             },
             {
-              name: "Status",
-              label: "Status",
+              name: "status",
+              label: this.$tr('isite.cms.form.status'),
               field: "status",
-              format: val => val ? this.$tr("isite.cms.label.enabled") : this.$tr("isite.cms.label.disabled"),
               align: "left",
             },
             {
@@ -78,16 +77,6 @@ export default {
               },
               config: {options: {label: 'airlineName', value: 'id'}},
             },
-          },
-          status: {
-            value: null,
-            type: 'select',
-            props: {
-              label: 'Status',
-              options:[
-                { label:this.$tr("isite.cms.label.enabled"),value: true },
-                { label:this.$tr("isite.cms.label.disabled"),value: false }]
-            }
           },
         },
       };
