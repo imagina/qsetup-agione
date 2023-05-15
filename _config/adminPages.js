@@ -120,6 +120,7 @@ export default {
     }
   },
   passengerCarrierStations: {
+    permission: 'setup.passenger-carrier-stations.manage',
     activated: true,
     authenticated: true,
     path: '/setup/passengerCarrierStations',

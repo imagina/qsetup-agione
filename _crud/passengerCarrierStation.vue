@@ -63,7 +63,7 @@ export default {
               crudProps: {
                 label: 'Station Name',
               },
-              config: {options: {label: 'stationName', value: 'id'}},
+              config: {options: {label: 'fullName', value: 'id'}},
             },
           },
           airlineId: {
@@ -77,6 +77,17 @@ export default {
               },
               config: {options: {label: 'airlineName', value: 'id'}},
             },
+          },
+          status: {
+            value: true,
+            type: 'select',
+            props: {
+              label: `${this.$tr('isite.cms.form.status')}:`,
+              options: [
+                {label: this.$tr('isite.cms.label.enabled'), value: true},
+                {label: this.$tr('isite.cms.label.disabled'), value: false},
+              ]
+            }
           },
         },
       };
