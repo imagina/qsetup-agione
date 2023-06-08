@@ -41,7 +41,7 @@ export default {
               align: "left",
             },
           ],
-          requestParams: {include: 'station,airline'},
+          requestParams: {include: 'station,airline', filter: {companyId: 30}},
         },
         create: {
           title: 'Create Passenger Carrier Station'
