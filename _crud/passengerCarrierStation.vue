@@ -41,7 +41,7 @@ export default {
               align: "left",
             },
           ],
-          requestParams: {include: 'station,airline', filter: {companyId: 30}},
+          requestParams: {include: 'station,airline'},
         },
         create: {
           title: 'Create Passenger Carrier Station'
@@ -63,7 +63,10 @@ export default {
               crudProps: {
                 label: 'Station Name',
               },
-              config: {options: {label: 'fullName', value: 'id'}},
+              config: {
+                options: {label: 'fullName', value: 'id'},
+                requestParams: {filter: {companyId: 30}}
+              },
             },
           },
           airlineId: {
