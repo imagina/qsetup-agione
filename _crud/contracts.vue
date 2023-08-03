@@ -123,13 +123,11 @@ export default {
           },
           requestParams: {},
         },
-        create: {
-          title: "Create contract",
-        },
+        create: false,
         update: {
           title: "Update contract",
         },
-        delete: true,
+        delete: false,
         formLeft: {
           id: {
             value: null,
@@ -198,6 +196,7 @@ export default {
               clearable: true,
               color: "primary",
               "hide-bottom-space": false,
+              readonly: true,
             },
             label: "contract Status Id",
           },
@@ -206,6 +205,7 @@ export default {
             type: "select",
             props: {
               label: "Contract Type",
+              readonly: true,
             },
             loadOptions: {
               apiRoute: "apiRoutes.qsetupagione.contractType",
@@ -224,6 +224,7 @@ export default {
               clearable: true,
               color: "primary",
               format24h: true,
+              readonly: true,
             },
           },
           workdayId: {
@@ -237,6 +238,7 @@ export default {
               clearable: true,
               color: "primary",
               "hide-bottom-space": false,
+              readonly: true,
             },
             label: "Workday Id",
           },
@@ -251,6 +253,7 @@ export default {
             props: {
               label: "Customer",
               clearable: true,
+              readonly: true,
             },
           },
           buildingId: {
@@ -264,6 +267,7 @@ export default {
             props: {
               label: "Building",
               clearable: true,
+              readonly: true,
             },
           },
           costCenterId: {
@@ -277,6 +281,7 @@ export default {
             props: {
               label: "Cost Center",
               clearable: true,
+              readonly: true,
             },
           },
           businessUnitId: {
@@ -290,6 +295,7 @@ export default {
             props: {
               label: "Business Unit Id",
               clearable: true,
+              readonly: true,
             },
           },
           companyId: {
@@ -303,11 +309,34 @@ export default {
             props: {
               label: "Company",
               clearable: true,
+              readonly: true,
             },
           },
         },
+        getDataForm: (data, typeForm) => {
+          return new Promise((resolve, reject) => {
+            resolve({
+              ...data,
+              contractEffectiveDate: this.dateFormatterFull(data.contractEffectiveDate),
+            })
+          })
+        }
       };
     },
   },
+  methods:{
+    dateFormatterFull(date, type = "datetime") {
+      if (!date) return null
+      if(type == "datetime"){
+        const formDate = date.split(" ")
+        const [year, month, day] = formDate[0].substr(0, 10).split('/')
+        const [hr, mm] = formDate[1].substr(0, 5).split(':')
+        return `${month}/${day}/${year} ${hr}:${mm}`
+      }else{
+        const [year, month, day] = date.substr(0, 10).split('/')
+        return `${month}/${day}/${year}`
+      }
+    },
+  }
 };
 </script>
