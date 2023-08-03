@@ -13,6 +13,7 @@ export default [
       pages.qsetupagione.gates,
       pages.qsetupagione.areas,
       pages.qsetupagione.passengerCarrierStations,
+      pages.qsetupagione.contracts
     ]
   },
 ]
