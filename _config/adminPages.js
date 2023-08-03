@@ -134,4 +134,18 @@ export default {
       refresh: true,
     }
   },
+  contracts: {
+    activated: true,
+    authenticated: true,
+    path: '/setup/contracts',
+    name: 'qsetupagione.admin.contracts',
+    crud: import('../_crud/contracts.vue'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'isetup.cms.sidebar.contracts',
+    icon: 'fal fa-building',
+    subHeader: {
+      refresh: true,
+    }
+  },
 }
