@@ -142,6 +142,7 @@ export default {
               label: "Contract Name",
               clearable: true,
               color: "primary",
+              readonly: true,
               "hide-bottom-space": false,
             },
             label: "Contract Name",
