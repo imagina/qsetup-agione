@@ -168,8 +168,8 @@ export default {
             props: {
               label: "Ready To Post Wd",
               options: [
-                { id: 0, value: "false", label: "false" },
-                { id: 1, value: "true", label: "true" },
+                {label: this.$tr('isite.cms.label.enabled'), value: true},
+                {label: this.$tr('isite.cms.label.disabled'), value: false},
               ],
             },
           },
@@ -179,9 +179,9 @@ export default {
             props: {
               label: "One Click Post",
               options: [
-                { id: 0, value: "false", label: "false" },
-                { id: 1, value: "true", label: "true" },
-              ],
+                {label: this.$tr('isite.cms.label.enabled'), value: true},
+                {label: this.$tr('isite.cms.label.disabled'), value: false},
+              ]
             },
           },
         },
