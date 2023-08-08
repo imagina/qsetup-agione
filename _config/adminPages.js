@@ -135,6 +135,7 @@ export default {
     }
   },
   contracts: {
+    permission: 'setup.contracts.manage',
     activated: true,
     authenticated: true,
     path: '/setup/contracts',
