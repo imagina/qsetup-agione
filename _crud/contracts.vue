@@ -5,7 +5,7 @@ export default {
   computed: {
     crudData() {
       return {
-        permission: 'setup.contracts.manage',
+        permission: 'setup.contracts',
         crudId: this.$uid(),
         //entityName: config("main.qsetupagione.entityNames.stations"),
         apiRoute: "apiRoutes.qsetupagione.contracts",
