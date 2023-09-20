@@ -24,5 +24,7 @@ export default {
   gates: `${urlBase}/gates`,
   areas: `${urlBase}/areas`,
   passengerCarrierStations: `${urlBase}/passenger-carrier-stations`,
-  businessUnits: `${urlBase}/business-units`
+  businessUnits: `${urlBase}/business-units`,
+  workdaySync: `/isite/v1/settings/setup::workdaySync`,
+  workdaySyncPost: `/setup/v1/workday-sync`
 }
