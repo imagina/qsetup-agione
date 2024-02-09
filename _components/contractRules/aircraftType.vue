@@ -18,10 +18,9 @@
 
       </div>
       <div flat class="row">
-        <template v-for="(field,keyField) in aircraftTypesFields">
+        <template v-for="(field,keyField) in aircraftTypesFields" :key="keyField">
           <dynamic-field
               class="col-12 col-md-5 q-pr-sm"
-              :key="keyField"
               :field="field"
               v-model="acTypesList[keyField.includes('acTypes') ? keyField.split('acTypes')[1] : keyField.split('contractLineId')[1]][keyField.includes('contractLineId') ? 'contractLineId' : 'acTypes']"
           />
