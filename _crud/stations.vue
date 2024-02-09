@@ -48,7 +48,7 @@ export default {
           title: 'Create station'
         },
         update: {
-          title: 'Update companies'
+          title: 'Update station'
         },
         delete: true,
         formLeft: {

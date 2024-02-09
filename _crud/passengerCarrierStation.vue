@@ -1,8 +1,13 @@
 <template></template>
 
 <script>
+import { COMPANY_PASSENGER } from 'src/modules/qramp/_components/model/constants.js'
 export default {
   computed: {
+    companies() {
+      const passengerCompanies = this.$store.getters['qsiteApp/getSettingValueByName']('ramp::passengerCompanies')
+      return passengerCompanies.length > 0 ? passengerCompanies : COMPANY_PASSENGER;
+    },
     crudData() {
       return {
         crudId: this.$uid(),
@@ -42,6 +47,36 @@ export default {
             },
           ],
           requestParams: {include: 'station,airline'},
+          filters: {
+            status: {
+              value: null,
+              type: 'select',
+              props: {
+                label: `${this.$tr('isite.cms.form.status')}:`,
+                clearable: true,
+                options: [
+                  {label: this.$tr('isite.cms.label.enabled'), value: true},
+                  {label: this.$tr('isite.cms.label.disabled'), value: false},
+                ]
+              }
+            },
+            stationId: {
+              value: null,
+              type: 'crud',
+              props: {
+                crudType: 'select',
+                crudData: import('../_crud/stations'),
+                crudProps: {
+                  label: 'Station Name',
+                  clearable: true,
+                },
+                config: {
+                  options: {label: 'fullName', value: 'id'},
+                  requestParams: {filter: {companyId: this.companies}}
+                },
+              },
+            },
+          }
         },
         create: {
           title: 'Create Passenger Carrier Station'
@@ -65,7 +100,7 @@ export default {
               },
               config: {
                 options: {label: 'fullName', value: 'id'},
-                requestParams: {filter: {companyId: 30}}
+                requestParams: {filter: {companyId: this.companies}}
               },
             },
           },
