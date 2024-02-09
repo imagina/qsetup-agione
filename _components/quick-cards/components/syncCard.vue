@@ -21,12 +21,12 @@
         </div>
         <div v-if="lastSync" class="text-bold">
           <p>Last Sync: {{ lastSync }}</p>
-        </div>          
+        </div>
         <div  v-if="syncedByName">
           by {{ syncedByName }}
-        </div>  
+        </div>
       </div>
-    </div>   
+    </div>
   </div>
 </template>
 <script>
@@ -44,6 +44,5 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
+<style lang="scss">
 </style>
-  
