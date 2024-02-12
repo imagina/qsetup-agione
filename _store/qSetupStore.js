@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import baseService from '@imagina/qcrud/_services/baseService.js'
+import baseService from 'modules/qcrud/_services/baseService.js'
 
 const modelContract = {
     contractName: null,
@@ -78,7 +78,7 @@ export default function qSetupStore() {
     }
     function showModalLoadingContract() {
         state.modalLoadingContract = true;
-    } 
+    }
     function resetBasicDataContract() {
         state.basicDataContract = {...modelContract};
     }
