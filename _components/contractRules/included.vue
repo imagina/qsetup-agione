@@ -29,6 +29,7 @@ export default {
       }},
     contractId: {default: null},
   },
+  emits: ['update:modelValue'],
   components: {},
   watch: {},
   mounted() {
@@ -118,7 +119,7 @@ export default {
           if (success) {
             // yay, models are correct
             this.data = this.$clone(this.form)
-            this.$emit('input', this.data )
+            this.$emit('update:modelValue', this.data )
             resolve(success)
           }
           else {

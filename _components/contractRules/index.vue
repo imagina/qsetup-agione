@@ -53,10 +53,11 @@ export default {
     this.$root.$off('page.data.refresh')
   },
   props: {
-    value: {default: true},
+    modelValue: {default: true},
     update: {default: false},
     row: {default: false},
   },
+  emits: ['loading','close'],
   components: {
     included,
     parking,
