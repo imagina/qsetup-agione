@@ -41,9 +41,11 @@
   </div>
 </template>
 <script>
+import { eventBus } from 'src/plugins/utils'
+
 export default {
   beforeDestroy() {
-    this.$root.$off('page.data.refresh')
+    eventBus.off('page.data.refresh')
   },
   props: {
     form: {

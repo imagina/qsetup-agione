@@ -47,10 +47,11 @@ import aircraftType from '../../_components/contractRules/aircraftType.vue'
 import operationType from '../../_components/contractRules/operationType.vue'
 import cargoKilos from '../../_components/contractRules/cargoKilos.vue'
 import qSetupStore from "../../_store/qSetupStore.js";
+import { eventBus } from 'src/plugins/utils'
 
 export default {
   beforeDestroy() {
-    this.$root.$off('page.data.refresh')
+    eventBus.off('page.data.refresh')
   },
   props: {
     modelValue: {default: true},
@@ -212,7 +213,7 @@ export default {
                   : `${this.$tr('isite.cms.message.recordCreated')}`;
               this.$alert.info({message})
 
-              this.$root.$emit('crud.data.refresh')
+              eventBus.emit('crud.data.refresh')
               this.$emit('close', false)
               this.$emit('loading', false)
               this.loading = false;
