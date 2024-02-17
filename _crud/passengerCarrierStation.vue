@@ -5,7 +5,7 @@ import { COMPANY_PASSENGER } from 'src/modules/qramp/_components/model/constants
 export default {
   computed: {
     companies() {
-      const passengerCompanies = this.$store.getters['qsiteApp/getSettingValueByName']('ramp::passengerCompanies')
+      const passengerCompanies = this.$getSetting('ramp::passengerCompanies')
       return passengerCompanies.length > 0 ? passengerCompanies : COMPANY_PASSENGER;
     },
     crudData() {
