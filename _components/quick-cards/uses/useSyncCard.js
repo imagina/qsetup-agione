@@ -1,7 +1,10 @@
-import { computed, reactive, getCurrentInstance } from 'vue'
+import { computed, reactive } from 'vue'
+import crud from 'src/modules/qcrud/_services/baseService'
+import apiResponse from 'src/modules/qcrud/_plugins/apiResponse'
+import { alert } from 'src/plugins/utils'
+
 
 export default function useSyncCard(props){
-  const proxy = getCurrentInstance().appContext.config.globalProperties
 	let button = reactive({
 		disable: false,
 		loading: false,
@@ -20,11 +23,11 @@ export default function useSyncCard(props){
 		return new Promise(async (resolve, reject) => {
 			button.loading = true;
 			button.disable = true;
-			proxy.$crud.create(props.cardParams.syncApiRoute, props.cardParams.syncRequestParams).then(response => {
+			crud.create(props.cardParams.syncApiRoute, props.cardParams.syncRequestParams).then(response => {
 				button.loading = false;
 			}).catch(error => {
-				proxy.$apiResponse.handleError(error, () => {
-					proxy.$alert.error(error)
+				apiResponse.handleError(error, () => {
+					alert.error(error)
 					resolve(error)
 				})
 			})
