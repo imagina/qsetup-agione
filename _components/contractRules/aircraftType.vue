@@ -13,7 +13,7 @@
       <div class="full-width q-px-md">
         <q-item-label>
           Aircraft Type Options
-          <q-btn class="q-ml-sm" flat round icon="add" color="primary" @click="addAcTypes()"/>
+          <q-btn class="q-ml-sm" flat round icon="fa-light fa-plus" color="primary" @click="addAcTypes()"/>
         </q-item-label>
 
       </div>
@@ -29,7 +29,7 @@
               v-if="ifDelButton(field, keyField)"
               style="width: 40px; height:38px"
               class="col-12 btn-stick col-md-1"
-              round icon="delete" flat
+              round icon="fa-light fa-trash-can" flat
               size="12px"
               color="primary"
               @click="delAcType(keyField)"
