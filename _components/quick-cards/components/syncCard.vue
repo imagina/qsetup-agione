@@ -38,9 +38,11 @@ export default {
     return {...useSyncCard(props)}
   },
   props: {
-    items: [],
     loading: Boolean,
-    cardParams: {}
+    cardParams: {
+      type: Object,
+      default: () => {}
+    }
   }
 }
 </script>
