@@ -30,10 +30,20 @@
 
     <!--Actions-->
     <div class="box box-auto-height row justify-end">
-      <q-btn v-for="(action, keyAction) in formActions" :key="keyAction" v-bind="action"
-             unelevated rounded no-caps @click="save()" type="button"
-
-             v-if="action.vIf != undefined ? action.vIf : true"/>
+      <template
+        v-for="(action, keyAction) in formActions"
+        :key="keyAction"
+      >
+        <q-btn
+          v-bind="action"
+          unelevated
+          rounded
+          no-caps
+          @click="save()"
+          type="button"
+          v-if="action.vIf != undefined ? action.vIf : true"
+        />
+      </template>
       <inner-loading :visible="loading"/>
     </div>
   </div>
