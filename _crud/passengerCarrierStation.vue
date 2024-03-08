@@ -5,7 +5,7 @@ import { COMPANY_PASSENGER } from 'src/modules/qramp/_components/model/constants
 export default {
   computed: {
     companies() {
-      const passengerCompanies = this.$getSetting('ramp::passengerCompanies')
+      const passengerCompanies = this.$getSetting('ramp::passengerCompanies') || []
       return passengerCompanies.length > 0 ? passengerCompanies : COMPANY_PASSENGER;
     },
     crudData() {
@@ -114,6 +114,15 @@ export default {
                 label: 'Airline',
               },
               config: {options: {label: 'airlineName', value: 'id'}},
+            },
+          },
+          separationHours: {
+            value: null,
+            type: 'input',
+            props: {
+              label: `Flight Schedule Inbound/Outbound separation by Hours`,
+              type: "number",
+              step: "0.1",
             },
           },
           status: {

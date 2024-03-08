@@ -37,6 +37,20 @@ export default {
             },
           ],
           requestParams: {include: 'station'},
+          filters: {
+            stationId: {
+              value: null,
+              type: 'crud',
+              props: {
+                crudType: 'select',
+                crudData: import('src/modules/qsetupagione/_crud/stations.vue'),
+                crudProps: {
+                  label: 'Station Name',
+                },
+                config: {options: {label: 'stationName', value: 'id'}},
+              },
+            },
+          }
         },
         create: {
           title: 'Create Parking Spot'
