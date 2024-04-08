@@ -149,4 +149,19 @@ export default {
       refresh: true,
     }
   },
+  passengerContractRules: {
+    permission: 'ramp.passenger-contract-rules.manage',
+    activated: true,
+    authenticated: true,
+    path: '/ramp/passenger-contract-rules/index',
+    name: 'qramp.admin.passengerContractRules',
+    crud: import('../_crud/passengerContractRules.vue'),
+    page: () => import('@imagina/qcrud/_pages/admin/crudPage'),
+    layout: () => import('@imagina/qsite/_layouts/master.vue'),
+    title: 'Passenger contract rules',
+    icon: 'fa-light fa-briefcase',
+    subHeader: {
+      refresh: true,
+    }
+  },
 }
