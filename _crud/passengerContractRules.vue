@@ -1,8 +1,8 @@
 <template>
   <div>
-    <q-btn 
+    <q-btn
       color="primary"
-      label="Upload contract rules" 
+      label="Upload contract rules"
       icon="fa-light fa-cloud-arrow-up"
       class="tw-my-4"
       @click="visibleModal(true)"
@@ -57,24 +57,28 @@ export default {
               label: 'Contract',
               field: 'contract',
               format: (val) => (val ? val.contractName : "-"),
+              popupEdit: true,
             },
             {
               name: 'contractLineWId',
               label: 'Contract Line WID',
               field: 'contractLine',
               format: (val) => (val ? val.contractLineWorkdayId : "-"),
+              popupEdit: true,
             },
             {
               name: 'invoiceLineMemo',
               label: 'Invoice Line Memo',
               field: 'contractLine',
               format: (val) => (val ? val.invoiceLineMemo : "-"),
+              popupEdit: true,
             },
             {
               name: 'products',
               label: 'Product',
               field: 'product',
               format: (val) => (val ? val.name : "-"),
+              popupEdit: true,
             },
             {
               name: 'aircraftTypes',
