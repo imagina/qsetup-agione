@@ -60,7 +60,7 @@ import qSetupStore from "../../_store/qSetupStore.js";
 import { eventBus } from 'src/plugins/utils'
 
 export default {
-  beforeDestroy() {
+  beforeUnmount() {
     eventBus.off('page.data.refresh')
   },
   props: {
