@@ -184,23 +184,19 @@ export default {
               ]
             },
           },
+          contractStatusId: {
+            value: 2,
+            type: "select",
+            props: {
+              label: "Contract Status Id",
+              options: [
+                { label: this.$tr('isite.cms.label.enabled'), value: 1 },
+                { label: this.$tr('isite.cms.label.disabled'), value: 2 },
+              ],
+            },
+          },
         },
         formRight: {
-          contractStatusId: {
-            value: "",
-            type: "input",
-            props: {
-              rules: [
-                (val) => !!val || this.$tr("isite.cms.message.fieldRequired"),
-              ],
-              label: "contract Status Id",
-              clearable: true,
-              color: "primary",
-              "hide-bottom-space": false,
-              readonly: true,
-            },
-            label: "contract Status Id",
-          },
           contractTypeId: {
             value: "",
             type: "select",
