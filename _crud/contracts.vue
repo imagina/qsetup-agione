@@ -122,6 +122,30 @@ export default {
             },
           },
           requestParams: {},
+          actions: [
+            {
+              name: 'resync',
+              icon: 'fa-solid fa-rotate-right',
+              label: 'Resync',
+              action: (item) => {
+                this.resync(item.id)
+              },
+              format: item => ({
+                vIf: this.$auth.hasAccess('setup.contracts.resync')
+              })
+            },
+          ],
+          bulkActions: [
+            {
+              apiRoute: 'apiRoutes.qsetupagione.bulkResync',
+              permission: 'setup.contracts.bulk-resync',
+              criteria: 'id',
+              props: {
+                icon: 'fas fa-download',
+                label: 'Bulk resync'
+              }
+            },
+          ],
         },
         create: false,
         update: {
@@ -334,6 +358,20 @@ export default {
         return `${month}/${day}/${year}`
       }
     },
+    async resync(id) {
+      const RESYNC_BY_DEFAULT = 1
+      const API_ROUTE = 'apiRoutes.qsetupagione.resync'
+
+      try {
+        await this.$crud.update(API_ROUTE, id, {
+          id,
+          resync: RESYNC_BY_DEFAULT
+        });
+        this.$root.$emit('crud.data.refresh');
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 };
 </script>

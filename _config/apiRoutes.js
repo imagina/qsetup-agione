@@ -26,5 +26,7 @@ export default {
   passengerCarrierStations: `${urlBase}/passenger-carrier-stations`,
   businessUnits: `${urlBase}/business-units`,
   workdaySync: `/isite/v1/settings/setup::workdaySync`,
-  workdaySyncPost: `/setup/v1/workday-sync`
+  workdaySyncPost: `${urlBase}/workday-sync`,
+  bulkResync: `${urlBase}/contracts/bulk-resync`,
+  resync: `${urlBase}/contracts/resync`
 }
