@@ -131,7 +131,7 @@ export default {
                 this.resync(item.id)
               },
               format: item => ({
-                vIf: this.$auth.hasAccess('setup.contracts.resync')
+                vIf: this.$hasAccess('setup.contracts.resync')
               })
             },
           ],
