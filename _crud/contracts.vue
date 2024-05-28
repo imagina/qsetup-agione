@@ -1,6 +1,8 @@
 <template></template>
 
 <script>
+import { i18n } from 'src/plugins/utils.ts';
+
 export default {
   computed: {
     crudData() {
@@ -22,12 +24,20 @@ export default {
               label: "Contract Name",
               field: "contractName",
               align: "left",
+              action: 'edit'
             },
             {
               name: "customerName",
               label: "Customer Name",
               field: "customerName",
               align: "left",
+            },
+            {
+              name: 'contractStatusId',
+              label: 'Status',
+              field: 'contractStatusId',
+              format: val => val == 1 ? i18n.tr('isite.cms.label.enabled') : i18n.tr('isite.cms.label.disabled'),
+              align: 'left',
             },
             {
               name: "building",
@@ -122,6 +132,40 @@ export default {
             },
           },
           requestParams: {},
+          relation: {
+            label: 'Contracts Lines',
+            apiRoute: 'apiRoutes.qsetupagione.contractLines',
+            requestParams: (row) => ({
+              filter: {contractId: row.id},
+              include: "contract",
+            }),
+            columns: [
+              {
+                name: "Id",
+                label: "ID",
+                field: "id",
+                align: "left",
+              },
+              {
+                name: "fullName",
+                label: "Name",
+                field: "fullName",
+                align: "left",
+              },
+              {
+                name: "contractLineWorkdayId",
+                label: "Contract Line Workday Id",
+                field: "contractLineWorkdayId",
+                align: "left",
+              },
+              {
+                name: "contractLineName",
+                label: "Contract Line Name",
+                field: "contractLineName",
+                align: "left",
+              },
+            ],
+          },
           actions: [
             {
               name: 'resync',
