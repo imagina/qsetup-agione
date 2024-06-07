@@ -136,7 +136,7 @@ export default {
             label: 'Contracts Lines',
             apiRoute: 'apiRoutes.qsetupagione.contractLines',
             requestParams: (row) => ({
-              filter: {contractId: row.id},
+              filter: { contractId: row.id },
               include: "contract",
             }),
             columns: [
@@ -236,8 +236,8 @@ export default {
             props: {
               label: "Ready To Post Wd",
               options: [
-                {label: this.$tr('isite.cms.label.enabled'), value: true},
-                {label: this.$tr('isite.cms.label.disabled'), value: false},
+                { label: this.$tr('isite.cms.label.enabled'), value: true },
+                { label: this.$tr('isite.cms.label.disabled'), value: false },
               ],
             },
           },
@@ -247,24 +247,39 @@ export default {
             props: {
               label: "One Click Post",
               options: [
-                {label: this.$tr('isite.cms.label.enabled'), value: true},
-                {label: this.$tr('isite.cms.label.disabled'), value: false},
+                { label: this.$tr('isite.cms.label.enabled'), value: true },
+                { label: this.$tr('isite.cms.label.disabled'), value: false },
               ]
             },
           },
-          contractStatusId: {
-            value: 2,
+          passengerLaborContract: {
+            value: null,
             type: "select",
             props: {
-              label: "Contract Status Id",
+              label: 'Passenger labor contract',
               options: [
-                { label: this.$tr('isite.cms.label.enabled'), value: 1 },
-                { label: this.$tr('isite.cms.label.disabled'), value: 2 },
+                { label: 'Yes', value: true },
+                { label: 'No', value: false },
               ],
             },
           },
         },
         formRight: {
+          contractStatusId: {
+            value: "",
+            type: "select",
+            props: {
+              rules: [
+                (val) => !!val || this.$tr("isite.cms.message.fieldRequired"),
+              ],
+              label: "contract Status Id",
+              clearable: true,
+              options: [
+                { label: this.$tr('isite.cms.label.enabled'), value: 1 },
+                { label: this.$tr('isite.cms.label.disabled'), value: 2 },
+              ]
+            },
+          },
           contractTypeId: {
             value: "",
             type: "select",
@@ -389,15 +404,15 @@ export default {
       };
     },
   },
-  methods:{
+  methods: {
     dateFormatterFull(date, type = "datetime") {
       if (!date) return null
-      if(type == "datetime"){
+      if (type == "datetime") {
         const formDate = date.split(" ")
         const [year, month, day] = formDate[0].substr(0, 10).split('/')
         const [hr, mm] = formDate[1].substr(0, 5).split(':')
         return `${month}/${day}/${year} ${hr}:${mm}`
-      }else{
+      } else {
         const [year, month, day] = date.substr(0, 10).split('/')
         return `${month}/${day}/${year}`
       }

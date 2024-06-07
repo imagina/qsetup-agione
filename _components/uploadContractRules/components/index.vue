@@ -30,6 +30,14 @@
             </div>
         </div>
         <div>
+            <div class="tw-p-4 tw-mx-4 tw-mt-2 tw-rounded-md tw-border tw-shadow-md">
+                <p class="tw-text-sm tw-pb-3 tw-font-semibold">Percentage of progress of contract rules</p>
+                <q-linear-progress size="25px" :value="percentageCompleted" color="primary">
+                    <div class="absolute-full flex flex-center">
+                        <q-badge color="white" text-color="primary" :label="Math.floor(percentageCompleted * 100)" />
+                    </div>
+                </q-linear-progress>
+            </div>
             <uploadedRecordsTable />
         </div>
     </master-modal>
