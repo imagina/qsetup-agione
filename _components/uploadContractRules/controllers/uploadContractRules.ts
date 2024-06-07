@@ -6,6 +6,7 @@ import baseService from '@imagina/qcrud/_services/baseService.js'
 import alert from '@imagina/qsite/_plugins/alert';
 
 export default function uploadContractRules(props: any = null) {
+    const percentageCompleted = ref(0);
     const proxy = (getCurrentInstance() as any).proxy as any;
     const uploaderFile: any = ref(null);
     const isFile = ref(false);
@@ -58,6 +59,8 @@ export default function uploadContractRules(props: any = null) {
     }
 
     async function processAndLoadContractRulesFromExcel() {
+        const totalRequests = uploadContractRulesStore.excelList.length;
+        let completedRequests = 0;
         const model = [
             "Contract",
             "Contract Line Workday ID",
@@ -91,6 +94,8 @@ export default function uploadContractRules(props: any = null) {
                     linesRulesList.message = { text: "The rule is ignored because you have empty data", color: 'orange' }
                 }
             }
+            completedRequests++;
+            percentageCompleted.value = completedRequests / totalRequests;
             uploadContractRulesStore.tableData.push(linesRulesList);
         }
     }
@@ -99,6 +104,7 @@ export default function uploadContractRules(props: any = null) {
         uploadContractRulesStore.excelList = [];
         reader.value = null;
         isFile.value = false;
+        percentageCompleted.value = 0;
     }
     function hide() {
         uploadContractRulesStore.reset()
@@ -107,6 +113,7 @@ export default function uploadContractRules(props: any = null) {
     onBeforeMount(() =>{
         uploadContractRulesStore.reset()
         isFile.value = false;
+        percentageCompleted.value = 0;
     })
     return { 
         showModal,
@@ -118,6 +125,7 @@ export default function uploadContractRules(props: any = null) {
         removeFile,
         uploaderFile,
         isFile,
-        uploadContractRulesStore,  
+        uploadContractRulesStore,
+        percentageCompleted  
     }
 }

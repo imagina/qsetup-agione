@@ -59,15 +59,19 @@ export default {
               align: "left",
             },
             {
-              name: 'Customer/Contract',
-              label:'Customer/Contract',
-              field: item => item.customCustomerName || item.customerId,
-              formatAsync: async item => {
-                  const response = await this.findCustomerContracts(item) || {label: '-'}
-                  return `${response.label || '-'}`;
-                },
-                align: 'left'
-              },
+              name: 'Customers',
+              label:'Customers',
+              field: "customer",
+              format: val => val ? val.customerName : '-',
+              align: 'left'
+            },
+            {
+              name: 'Contract',
+              label:'Contracts',
+              field: 'contract',
+              format: val => val ? val.contractName : '-',
+              align: 'left'
+            },
             {
               name: "status",
               label: this.$tr('isite.cms.form.status'),
@@ -80,7 +84,7 @@ export default {
               align: "left",
             },
           ],
-          requestParams: {include: 'station,airline'},
+          requestParams: {include: 'station,airline,contract,customer'},
           filters: {
             status: {
               value: null,
@@ -227,9 +231,11 @@ export default {
             if(formData.customerId && formData.contractId) {
               return item.id == formData.customerId && item.contractId == formData.contractId
             }
-            return item.id == formData.customerId;
+            if(formData.customerId && !formData.contractId) {
+              return item.id == formData.customerId && item.contractId == null;
+            }
       });
-      return customerContract
+      return customerContract || null
     }
   }
 };

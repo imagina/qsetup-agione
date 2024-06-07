@@ -1,12 +1,5 @@
 <template>
   <div>
-    <q-btn 
-      color="primary"
-      label="Upload contract rules" 
-      icon="fa-light fa-cloud-arrow-up"
-      class="tw-my-4"
-      @click="visibleModal(true)"
-    />
     <uploadContractRulesModal />
   </div>
 </template>
@@ -15,6 +8,10 @@ import workOrderList from 'src/modules/qramp/_store/actions/workOrderList.ts'
 import qRampStore from 'src/modules/qramp/_store/qRampStore.js'
 import uploadContractRulesStore  from '../_components/uploadContractRules/store/uploadContractRules.ts'
 import uploadContractRulesModal from '../_components/uploadContractRules/components/index.vue'
+import baseService from '@imagina/qcrud/_services/baseService.js' 
+import {
+    COMPANY_PASSENGER,
+} from '../../qramp/_components/model/constants.js';
 
 export default {
   components: {
@@ -23,11 +20,33 @@ export default {
   data() {
     return {
       crudId: this.$uid(),
+      externalId: null,
+      productList: [],
     }
   },
-  beforeCreated() {
+  watch: {
+    'crudInfo.contractLineId': {
+      deep: true,
+      handler: async function (newValue, oldValue) {
+        if(!newValue) return;
+        const response = await baseService.show('apiRoutes.qsetupagione.contractLines', 
+        newValue, {
+            refresh: true,
+        });
+        this.externalId = response.data.workdaySalesLineItemId || null;
+        const responseProduct = await baseService.index('apiRoutes.qramp.products', 
+        {
+          refresh: true,
+          params:{
+            filter: { externalId: this.externalId }
+        }});
+        this.productList = responseProduct.data.map(item => ({label: item.fullName, value: item.id}));
+      }
+    },
+  },
+  beforeCreate() {
     this.$nextTick(async () => {
-      await qRampStore().setIsPassenger(false);
+      await qRampStore().setIsPassenger(true);
       await Promise.all([
         workOrderList().getACTypes(),
         workOrderList().getOperationType()
@@ -41,8 +60,18 @@ export default {
         apiRoute: 'apiRoutes.qramp.passengerContractRules',
         permission: 'ramp.passenger-contract-rules',
         create: {
-           title: 'Create passenger contract rules'
+           title: 'Create passenger contract rules',
         },
+        extraActions: [{
+            props: {
+              icon: 'fa-light fa-cloud-arrow-up',
+              label: 'Upload contract rules',
+            },
+            label: 'Upload contract rules',
+            action: () => {
+              this.visibleModal(true)
+            }
+        }],
         read: {
           columns: [
             {
@@ -85,7 +114,7 @@ export default {
                 const response = await workOrderList().getACTypesList()
                   .filter(actypes => {
                       const aircraftTypes = Array.isArray(item.aircraftTypes) ?  item.aircraftTypes : [];
-                      return aircraftTypes.includes(actypes.id);
+                      return aircraftTypes.includes(String(actypes.id));
                     })
                   .map(item => item.fullName).join(', ');
                 return `${response || '-'}`;
@@ -100,9 +129,9 @@ export default {
                 const response = await workOrderList().getOperationTypeList()
                   .filter(operationType => {
                     const operationTypesItem = Array.isArray(item.operationTypes) ? item.operationTypes : [];
-                    operationTypesItem.includes(operationType.id)
+                    return operationTypesItem.includes(String(operationType.id))
                   })
-                  .map(item => item.fullName).join(', ');
+                  .map(item => item.operationName).join(', ');
                 return `${response || '-'}`;
               },
             },
@@ -151,6 +180,7 @@ export default {
               loadOptions: {
                 apiRoute: 'apiRoutes.qsetupagione.contracts',
                 select: {'label': 'contractName', 'id': 'id'},
+                filterByQuery: true,
               },
               props: {
                 label: 'Contract',
@@ -177,7 +207,7 @@ export default {
           }
         },
         update: {
-          title: 'Update passenger contract rules'
+          title: 'Update passenger contract rules',
         },
         delete: true,
         formLeft: {
@@ -200,27 +230,25 @@ export default {
               type: 'select',
               loadOptions: {
                   apiRoute: 'apiRoutes.qsetupagione.contractLines',
-                  select: {'label': 'contractLineName', 'id': 'id'},
-                  filterByQuery: true,
+                  select: {'label': 'fullName', 'id': 'id'},
+                  requestParams: { filter: { contractId: this.crudInfo.contractId }},
               },
               props: {
                   label: 'Contract Line',
                   'clearable': true,
+                  readonly: !this.crudInfo.contractId,
                   rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
               },
           },
           productId: {
               value: null,
               type: 'select',
-              loadOptions: {
-                  apiRoute: 'apiRoutes.qramp.products',
-                  select: {'label': 'name', 'id': 'id'},
-                  filterByQuery: true,
-              },
               props: {
                   label: 'Product',
                   'clearable': true,
+                  readonly: !this.crudInfo.contractLineId,
                   rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
+                  options: this.productList
               },
           },
           aircraftTypes: {
@@ -252,6 +280,7 @@ export default {
             loadOptions: {
               apiRoute: 'apiRoutes.qramp.operationTypes',
               select: {label: 'operationName', id: 'id'},
+              requestParams: { filter: { company: COMPANY_PASSENGER }},
             }
           },
           delay: {
@@ -307,6 +336,27 @@ export default {
             type: "input",
             props: {
               label: 'Value to',
+            },
+          },
+          quantityRule: {
+            value: null,
+            type: 'select',
+            props: {
+              label: 'Quantity Rule',
+              clearable: true,
+              color:"primary",
+              options: [
+                {label: 'Equal', value: 'Equal'},
+                {label: 'Surplus', value: 'Surplus'},
+                {label: 'All', value: 'All'},
+              ]
+            },
+          },
+          quantity: {
+            value: null,
+            type: "input",
+            props: {
+              label: 'Quantity',
             },
           },
         },
