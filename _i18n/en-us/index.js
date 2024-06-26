@@ -17,5 +17,14 @@ export default {
       },
       "message": {}
     }
+  },
+  "setupagione": {
+    "cms": {
+      "newContractRule": "New contract rule",
+      "updateContractRule": "Update contract rule",
+      "sidebar": {
+        "contractRules": "Contract rules"
+      }
+    }
   }
 }
