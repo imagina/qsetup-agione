@@ -1,6 +1,8 @@
 <template>
   <div>
-    <uploadContractRulesModal />
+    <uploadContractRulesModal @refreshData="getDataTable(true)" />
+    <crud :crud-data="import('./baseCrud.vue')" :custom-data="crudData" ref="crudComponent"
+          :title="$route.meta.title" />
   </div>
 </template>
 <script>
@@ -376,7 +378,10 @@ export default {
   methods: {
     visibleModal(show = false) {
       uploadContractRulesStore.showModal = show
-    }
+    },
+    async getDataTable(refresh) {
+      await this.$refs.crudComponent.getDataTable(refresh);
+    },
   }
 }
 </script>
