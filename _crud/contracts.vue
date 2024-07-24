@@ -33,11 +33,10 @@ export default {
               align: "left",
             },
             {
-              name: 'contractStatusId',
-              label: 'Status',
+              name: 'status',
+              label: this.$tr('isite.cms.form.status'),
               field: 'contractStatusId',
-              format: val => val == 1 ? i18n.tr('isite.cms.label.enabled') : i18n.tr('isite.cms.label.disabled'),
-              align: 'left',
+              align: 'left'
             },
             {
               name: "building",
