@@ -12,7 +12,7 @@ export default {
         "costCenters": "Cost Centers",
         "gates": "Parking Spots",
         "areas": "Areas",
-        "passengerCarrierStations": "Passenger Carrier Stations",
+        "passengerCarrierStations": "Passenger Flight Rules",
         "contracts": "Contracts"
       },
       "message": {}
@@ -23,7 +23,7 @@ export default {
       "newContractRule": "New contract rule",
       "updateContractRule": "Update contract rule",
       "sidebar": {
-        "contractRules": "Contract rules"
+        "contractRules": "Ramp Contract Rules"
       }
     }
   }
