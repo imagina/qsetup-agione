@@ -36,13 +36,13 @@ export default {
               name: 'status',
               label: 'Contract Status',
               field: 'contractStatusId',
-              align: 'left'
+              align: 'left',
             },
             {
               name: 'status',
               label: 'Ready To Post Wd',
               field: 'readyToPostWd',
-              align: 'left'
+              align: 'left',
             },
             {
               name: "building",
