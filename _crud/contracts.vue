@@ -40,7 +40,7 @@ export default {
             },
             {
               name: "building",
-              label: "building Name",
+              label: "Building Name",
               field: "building",
               format: val => val ? val.buildingName : '-',
               align: "left",
