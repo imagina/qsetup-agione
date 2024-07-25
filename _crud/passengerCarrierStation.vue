@@ -100,20 +100,18 @@ export default {
             },
             stationId: {
               value: null,
-              type: 'crud',
+              type: 'select',
               props: {
-                crudType: 'select',
-                crudData: import('../_crud/stations'),
-                crudProps: {
-                  label: 'Station Name',
-                  clearable: true,
-                },
-                config: {
-                  options: {label: 'fullName', value: 'id'},
-                  requestParams: {filter: {companyId: this.companies}}
-                },
+                label: `Station Name`,
+                clearable: true,
+                color:"primary"
               },
-            },
+              loadOptions: {
+                apiRoute: 'apiRoutes.qramp.setupStations',
+                select: {label: 'fullName', id: 'id'},
+                requestParams: {filter: {companyId: this.companies}}
+              },
+            }
           }
         },
         create: {
@@ -205,6 +203,19 @@ export default {
                 {label: this.$tr('isite.cms.label.disabled'), value: false},
               ]
             }
+          },
+          restrictedFlights: {
+            value: [],
+            type: 'select',
+            props: {
+              label: `Restricted Flights`,
+              useInput: true,
+              useChips: true,
+              multiple: true,
+              hideDropdownIcon: true,
+              inputDebounce: "0",
+              newValueMode: "add-unique"
+            },
           },
         },
         getDataForm: (formData, type) => {

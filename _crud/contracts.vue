@@ -30,8 +30,14 @@ export default {
               align: "left",
             },
             {
+              name: 'status',
+              label: this.$tr('isite.cms.form.status'),
+              field: 'contractStatusId',
+              align: 'left'
+            },
+            {
               name: "building",
-              label: "building Name",
+              label: "Building Name",
               field: "building",
               format: val => val ? val.buildingName : '-',
               align: "left",
