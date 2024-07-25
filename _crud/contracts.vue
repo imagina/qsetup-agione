@@ -33,16 +33,22 @@ export default {
               align: "left",
             },
             {
-              name: 'status',
+              name: 'contractStatusId',
               label: 'Contract Status',
               field: 'contractStatusId',
               align: 'left',
+              asStatus: true,
+              options: [
+                { label: this.$tr('isite.cms.label.enabled'), value: 1 },
+                { label: this.$tr('isite.cms.label.disabled'), value: 2 },
+              ],
             },
             {
-              name: 'status',
+              name: 'readyToPostWd',
               label: 'Ready To Post Wd',
               field: 'readyToPostWd',
               align: 'left',
+              asStatus: true,
             },
             {
               name: "building",
