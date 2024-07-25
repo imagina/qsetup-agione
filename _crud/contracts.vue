@@ -34,8 +34,14 @@ export default {
             },
             {
               name: 'status',
-              label: this.$tr('isite.cms.form.status'),
+              label: 'Contract Status',
               field: 'contractStatusId',
+              align: 'left'
+            },
+            {
+              name: 'status',
+              label: 'Ready To Post Wd',
+              field: 'readyToPostWd',
               align: 'left'
             },
             {
