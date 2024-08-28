@@ -8,9 +8,12 @@
           :disable="disableButton"
           :icon-right="icon"
           no-caps
+          rounded
+          color="secondary"
           :label="cardParams.buttonLabel"
           size="md"
-          />
+          unelevated
+        />
       </div>
     </div>
     <div class="row">
@@ -39,6 +42,7 @@ export default {
   },
   props: {
     loading: Boolean,
+    items: [],
     cardParams: {
       type: Object,
       default: () => {}
