@@ -28,5 +28,6 @@ export default {
   workdaySync: `/isite/v1/settings/setup::workdaySync`,
   workdaySyncPost: `${urlBase}/workday-sync`,
   bulkResync: `${urlBase}/contracts/bulk-resync`,
-  resync: `${urlBase}/contracts/resync`
+  resync: `${urlBase}/contracts/resync`,
+  employees: `${urlBase}/employees`,
 }
