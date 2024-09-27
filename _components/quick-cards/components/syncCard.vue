@@ -42,10 +42,13 @@ export default {
   },
   props: {
     loading: Boolean,
-    items: [],
+    items: {
+      type: Object,
+      default: () => ({})
+    },
     cardParams: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     }
   }
 }
