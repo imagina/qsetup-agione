@@ -43,7 +43,7 @@ export default {
               type: 'crud',
               props: {
                 crudType: 'select',
-                crudData: import('../_crud/stations'),
+                crudData: import('src/modules/qsetupagione/_crud/stations.vue'),
                 crudProps: {
                   label: 'Station Name',
                 },

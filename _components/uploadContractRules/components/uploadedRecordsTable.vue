@@ -3,7 +3,7 @@
 
       <q-table
         title="Contract rules upload status"
-        :data="tableData"
+        :rows="tableData"
         :columns="columns"
         row-key="name"
         class="stick-table"

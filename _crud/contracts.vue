@@ -1,6 +1,8 @@
 <template></template>
 
 <script>
+import { i18n } from 'src/plugins/utils.ts';
+
 export default {
   computed: {
     crudData() {
@@ -22,6 +24,7 @@ export default {
               label: "Contract Name",
               field: "contractName",
               align: "left",
+              action: 'edit'
             },
             {
               name: "customerName",
@@ -30,10 +33,22 @@ export default {
               align: "left",
             },
             {
-              name: 'status',
-              label: this.$tr('isite.cms.form.status'),
+              name: 'contractStatusId',
+              label: 'Contract Status',
               field: 'contractStatusId',
-              align: 'left'
+              align: 'left',
+              asStatus: true,
+              options: [
+                { label: this.$tr('isite.cms.label.enabled'), value: 1 },
+                { label: this.$tr('isite.cms.label.disabled'), value: 2 },
+              ],
+            },
+            {
+              name: 'readyToPostWd',
+              label: 'Ready To Post Wd',
+              field: 'readyToPostWd',
+              align: 'left',
+              asStatus: true,
             },
             {
               name: "building",
@@ -128,6 +143,40 @@ export default {
             },
           },
           requestParams: {},
+          relation: {
+            label: 'Contracts Lines',
+            apiRoute: 'apiRoutes.qsetupagione.contractLines',
+            requestParams: (row) => ({
+              filter: { contractId: row.id },
+              include: "contract",
+            }),
+            columns: [
+              {
+                name: "Id",
+                label: "ID",
+                field: "id",
+                align: "left",
+              },
+              {
+                name: "fullName",
+                label: "Name",
+                field: "fullName",
+                align: "left",
+              },
+              {
+                name: "contractLineWorkdayId",
+                label: "Contract Line Workday Id",
+                field: "contractLineWorkdayId",
+                align: "left",
+              },
+              {
+                name: "contractLineName",
+                label: "Contract Line Name",
+                field: "contractLineName",
+                align: "left",
+              },
+            ],
+          },
           actions: [
             {
               name: 'resync',
@@ -137,7 +186,7 @@ export default {
                 this.resync(item.id)
               },
               format: item => ({
-                vIf: this.$auth.hasAccess('setup.contracts.resync')
+                vIf: this.$hasAccess('setup.contracts.resync')
               })
             },
           ],
@@ -198,8 +247,8 @@ export default {
             props: {
               label: "Ready To Post Wd",
               options: [
-                {label: this.$tr('isite.cms.label.enabled'), value: true},
-                {label: this.$tr('isite.cms.label.disabled'), value: false},
+                { label: this.$tr('isite.cms.label.enabled'), value: true },
+                { label: this.$tr('isite.cms.label.disabled'), value: false },
               ],
             },
           },
@@ -209,8 +258,8 @@ export default {
             props: {
               label: "One Click Post",
               options: [
-                {label: this.$tr('isite.cms.label.enabled'), value: true},
-                {label: this.$tr('isite.cms.label.disabled'), value: false},
+                { label: this.$tr('isite.cms.label.enabled'), value: true },
+                { label: this.$tr('isite.cms.label.disabled'), value: false },
               ]
             },
           },
@@ -220,8 +269,8 @@ export default {
             props: {
               label: 'Passenger labor contract',
               options: [
-                {label: 'Yes', value: true},
-                {label: 'No', value: false},
+                { label: 'Yes', value: true },
+                { label: 'No', value: false },
               ],
             },
           },
@@ -237,8 +286,8 @@ export default {
               label: "contract Status Id",
               clearable: true,
               options: [
-                {label: this.$tr('isite.cms.label.enabled'), value: 1},
-                {label: this.$tr('isite.cms.label.disabled'), value: 2},
+                { label: this.$tr('isite.cms.label.enabled'), value: 1 },
+                { label: this.$tr('isite.cms.label.disabled'), value: 2 },
               ]
             },
           },
@@ -366,15 +415,15 @@ export default {
       };
     },
   },
-  methods:{
+  methods: {
     dateFormatterFull(date, type = "datetime") {
       if (!date) return null
-      if(type == "datetime"){
+      if (type == "datetime") {
         const formDate = date.split(" ")
         const [year, month, day] = formDate[0].substr(0, 10).split('/')
         const [hr, mm] = formDate[1].substr(0, 5).split(':')
         return `${month}/${day}/${year} ${hr}:${mm}`
-      }else{
+      } else {
         const [year, month, day] = date.substr(0, 10).split('/')
         return `${month}/${day}/${year}`
       }

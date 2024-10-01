@@ -3,9 +3,9 @@ import * as XLSX from 'xlsx';
 import uploadContractRulesStore from '../store/uploadContractRules'
 import _ from 'lodash';
 import baseService from '@imagina/qcrud/_services/baseService.js'
-import alert from '@imagina/qsite/_plugins/alert';
+import { alert } from 'src/plugins/utils'
 
-export default function uploadContractRules(props: any = null) {
+export default function uploadContractRules(props: any = null, emit: any = null) {
     const percentageCompleted = ref(0);
     const proxy = (getCurrentInstance() as any).proxy as any;
     const uploaderFile: any = ref(null);
@@ -44,10 +44,10 @@ export default function uploadContractRules(props: any = null) {
             loadingModal.value = true;
             await processAndLoadContractRulesFromExcel();
             uploaderFile.value?.reset()
-            uploadContractRulesStore.excelList = []; 
+            uploadContractRulesStore.excelList = [];
             loadingModal.value = false;
             isFile.value = false;
-            alert.success('I completed the upload of the records successfully'); 
+            alert.success('I completed the upload of the records successfully');
         } catch (error) {
             console.log(error);
             loadingModal.value = false;
@@ -108,14 +108,14 @@ export default function uploadContractRules(props: any = null) {
     }
     function hide() {
         uploadContractRulesStore.reset()
-        proxy.$root.$emit('crud.data.refresh');
+        emit('refreshData');
     }
     onBeforeMount(() =>{
         uploadContractRulesStore.reset()
         isFile.value = false;
         percentageCompleted.value = 0;
     })
-    return { 
+    return {
         showModal,
         loadingModal,
         hide,
@@ -126,6 +126,6 @@ export default function uploadContractRules(props: any = null) {
         uploaderFile,
         isFile,
         uploadContractRulesStore,
-        percentageCompleted  
+        percentageCompleted
     }
 }

@@ -1,9 +1,9 @@
-<template>    
+<template>
     <quick-card :params="quickCardParams" />
 </template>
 <script>
 //Component
-import quickCard from '@imagina/qsite/_components/master/quickCard';
+import quickCard from 'modules/qsite/_components/master/quickCard';
 import syncCard from './components/syncCard.vue';
 
 export default {
@@ -25,7 +25,7 @@ export default {
       return {
         type: 'custom',
         title: 'Workday Sync',
-        icon: 'fa-light fa-briefcase',        
+        icon: 'fa-light fa-briefcase',
         apiRoute: "apiRoutes.qsetupagione.workdaySync",
         requestParams: {
           filter: {"field": "name"}
@@ -40,6 +40,5 @@ export default {
   methods: {}
 }
 </script>
-<style lang="stylus">
+<style lang="scss">
 </style>
-  

@@ -1,4 +1,4 @@
-const pages = config('pages') // Get Pages from config
+import pages from 'src/setup/pages'
 export default [
   {
     title: 'isetup.cms.sidebar.setupInfo',
@@ -6,7 +6,7 @@ export default [
     children: [
       pages.qsetupagione.areas,  
       pages.qramp.attributes,
-      pages.qsetupagione.buildings, 
+      pages.qsetupagione.buildings,
       pages.qsetupagione.companies,
       pages.qsetupagione.contracts,
       pages.qsetupagione.costCenters,
@@ -15,7 +15,7 @@ export default [
       pages.qsetupagione.passengerCarrierStations,
       pages.qsetupagione.passengerContractRules,
       pages.qsetupagione.contractRules,
-      pages.qramp.categories, 
+      pages.qramp.categories,
       pages.qramp.services,
       pages.qsetupagione.stations,
       pages.qramp.workOrderStatuses,

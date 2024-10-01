@@ -30,10 +30,20 @@
 
     <!--Actions-->
     <div class="box box-auto-height row justify-end">
-      <q-btn v-for="(action, keyAction) in formActions" :key="keyAction" v-bind="action"
-             unelevated rounded no-caps @click="save()" type="button"
-
-             v-if="action.vIf != undefined ? action.vIf : true"/>
+      <template
+        v-for="(action, keyAction) in formActions"
+        :key="keyAction"
+      >
+        <q-btn
+          v-bind="action"
+          unelevated
+          rounded
+          no-caps
+          @click="save()"
+          type="button"
+          v-if="action.vIf != undefined ? action.vIf : true"
+        />
+      </template>
       <inner-loading :visible="loading"/>
     </div>
   </div>
@@ -47,16 +57,18 @@ import aircraftType from '../../_components/contractRules/aircraftType.vue'
 import operationType from '../../_components/contractRules/operationType.vue'
 import cargoKilos from '../../_components/contractRules/cargoKilos.vue'
 import qSetupStore from "../../_store/qSetupStore.js";
+import { eventBus } from 'src/plugins/utils'
 
 export default {
-  beforeDestroy() {
-    this.$root.$off('page.data.refresh')
+  beforeUnmount() {
+    eventBus.off('page.data.refresh')
   },
   props: {
-    value: {default: true},
+    modelValue: {default: true},
     update: {default: false},
     row: {default: false},
   },
+  emits: ['loading','close'],
   components: {
     included,
     parking,
@@ -211,7 +223,7 @@ export default {
                   : `${this.$tr('isite.cms.message.recordCreated')}`;
               this.$alert.info({message})
 
-              this.$root.$emit('crud.data.refresh')
+              eventBus.emit('crud.data.refresh')
               this.$emit('close', false)
               this.$emit('loading', false)
               this.loading = false;
@@ -260,5 +272,5 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
+<style lang="scss">
 </style>

@@ -28,9 +28,10 @@
   </div>
 </template>
 <script>
+import { eventBus } from 'src/plugins/utils'
 export default {
-  beforeDestroy() {
-    this.$root.$off('page.data.refresh')
+  beforeUnmount() {
+    eventBus.off('page.data.refresh')
   },
   props: {
     form: {
@@ -63,6 +64,7 @@ export default {
     },
     contractId: {default: null},
   },
+  emits: ['update:modelValue'],
   components: {},
   watch: {},
   mounted() {
@@ -258,7 +260,7 @@ export default {
             // yay, models are correct
             this.data = this.$clone(this.form)
             this.data.options = {kilosTypes: this.kilosTypes}
-            this.$emit('input', this.data)
+            this.$emit('update:modelValue', this.data)
             resolve(success)
           } else {
             // at least one invalid value
@@ -272,5 +274,5 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
+<style lang="scss">
 </style>

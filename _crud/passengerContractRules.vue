@@ -1,16 +1,18 @@
 <template>
   <div>
-    <uploadContractRulesModal />
+    <uploadContractRulesModal @refreshData="getDataTable(true)" />
+    <crud :crud-data="import('./baseCrud.vue')" :custom-data="crudData" ref="crudComponent"
+          :title="$route.meta.title" />
   </div>
 </template>
 <script>
 import workOrderList from 'src/modules/qramp/_store/actions/workOrderList.ts'
 import qRampStore from 'src/modules/qramp/_store/qRampStore.js'
-import uploadContractRulesStore  from '../_components/uploadContractRules/store/uploadContractRules.ts'
+import uploadContractRulesStore from '../_components/uploadContractRules/store/uploadContractRules.ts'
 import uploadContractRulesModal from '../_components/uploadContractRules/components/index.vue'
-import baseService from '@imagina/qcrud/_services/baseService.js' 
+import baseService from '@imagina/qcrud/_services/baseService.js'
 import {
-    COMPANY_PASSENGER,
+  COMPANY_PASSENGER,
 } from '../../qramp/_components/model/constants.js';
 
 export default {
@@ -28,19 +30,20 @@ export default {
     'crudInfo.contractLineId': {
       deep: true,
       handler: async function (newValue, oldValue) {
-        if(!newValue) return;
-        const response = await baseService.show('apiRoutes.qsetupagione.contractLines', 
-        newValue, {
-            refresh: true,
+        if (!newValue) return;
+        const response = await baseService.show('apiRoutes.qsetupagione.contractLines',
+          newValue, {
+          refresh: true,
         });
         this.externalId = response.data.workdaySalesLineItemId || null;
-        const responseProduct = await baseService.index('apiRoutes.qramp.products', 
-        {
-          refresh: true,
-          params:{
-            filter: { externalId: this.externalId }
-        }});
-        this.productList = responseProduct.data.map(item => ({label: item.fullName, value: item.id}));
+        const responseProduct = await baseService.index('apiRoutes.qramp.products',
+          {
+            refresh: true,
+            params: {
+              filter: { externalId: this.externalId }
+            }
+          });
+        this.productList = responseProduct.data.map(item => ({ label: item.fullName, value: item.id }));
       }
     },
   },
@@ -60,17 +63,17 @@ export default {
         apiRoute: 'apiRoutes.qramp.passengerContractRules',
         permission: 'ramp.passenger-contract-rules',
         create: {
-           title: 'Create passenger contract rules',
+          title: 'Create passenger contract rules',
         },
         extraActions: [{
-            props: {
-              icon: 'fa-light fa-cloud-arrow-up',
-              label: 'Upload contract rules',
-            },
+          props: {
+            icon: 'fa-light fa-cloud-arrow-up',
             label: 'Upload contract rules',
-            action: () => {
-              this.visibleModal(true)
-            }
+          },
+          label: 'Upload contract rules',
+          action: () => {
+            this.visibleModal(true)
+          }
         }],
         read: {
           columns: [
@@ -79,31 +82,34 @@ export default {
               label: this.$tr('isite.cms.form.id'),
               field: 'id',
               style: 'width: 50px',
-              action: (item) => false
             },
             {
               name: 'contractId',
               label: 'Contract',
               field: 'contract',
               format: (val) => (val ? val.contractName : "-"),
+              popupEdit: true,
             },
             {
               name: 'contractLineWId',
               label: 'Contract Line WID',
               field: 'contractLine',
               format: (val) => (val ? val.contractLineWorkdayId : "-"),
+              popupEdit: true,
             },
             {
               name: 'invoiceLineMemo',
               label: 'Invoice Line Memo',
               field: 'contractLine',
               format: (val) => (val ? val.invoiceLineMemo : "-"),
+              popupEdit: true,
             },
             {
               name: 'products',
               label: 'Product',
               field: 'product',
               format: (val) => (val ? val.name : "-"),
+              popupEdit: true,
             },
             {
               name: 'aircraftTypes',
@@ -113,9 +119,9 @@ export default {
               formatAsync: async item => {
                 const response = await workOrderList().getACTypesList()
                   .filter(actypes => {
-                      const aircraftTypes = Array.isArray(item.aircraftTypes) ?  item.aircraftTypes : [];
-                      return aircraftTypes.includes(String(actypes.id));
-                    })
+                    const aircraftTypes = Array.isArray(item.aircraftTypes) ? item.aircraftTypes : [];
+                    return aircraftTypes.includes(String(actypes.id));
+                  })
                   .map(item => item.fullName).join(', ');
                 return `${response || '-'}`;
               },
@@ -140,7 +146,7 @@ export default {
               label: 'Delay',
               field: 'delay',
               format: (val) => {
-                if(typeof val === 'boolean') {
+                if (typeof val === 'boolean') {
                   return val ? 'Yes' : 'No'
                 }
                 return '-'
@@ -179,7 +185,7 @@ export default {
               quickFilter: true,
               loadOptions: {
                 apiRoute: 'apiRoutes.qsetupagione.contracts',
-                select: {'label': 'contractName', 'id': 'id'},
+                select: { 'label': 'contractName', 'id': 'id' },
                 filterByQuery: true,
               },
               props: {
@@ -193,7 +199,7 @@ export default {
               quickFilter: true,
               loadOptions: {
                 apiRoute: 'apiRoutes.qramp.products',
-                select: {'label': 'fullName', 'id': 'id'},
+                select: { 'label': 'fullName', 'id': 'id' },
               },
               props: {
                 label: 'Sales Item',
@@ -212,44 +218,44 @@ export default {
         delete: true,
         formLeft: {
           contractId: {
-              value: null,
-              type: 'select',
-              loadOptions: {
-                  apiRoute: 'apiRoutes.qramp.setupContracts',
-                  select: {'label': 'contractName', 'id': 'id'},
-                  filterByQuery: true,
-              },
-              props: {
-                  label: 'Contract',
-                  'clearable': true,
-                  rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
-              },
+            value: null,
+            type: 'select',
+            loadOptions: {
+              apiRoute: 'apiRoutes.qramp.setupContracts',
+              select: { 'label': 'contractName', 'id': 'id' },
+              filterByQuery: true,
+            },
+            props: {
+              label: 'Contract',
+              'clearable': true,
+              rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
+            },
           },
           contractLineId: {
-              value: null,
-              type: 'select',
-              loadOptions: {
-                  apiRoute: 'apiRoutes.qsetupagione.contractLines',
-                  select: {'label': 'fullName', 'id': 'id'},
-                  requestParams: { filter: { contractId: this.crudInfo.contractId }},
-              },
-              props: {
-                  label: 'Contract Line',
-                  'clearable': true,
-                  readonly: !this.crudInfo.contractId,
-                  rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
-              },
+            value: null,
+            type: 'select',
+            loadOptions: {
+              apiRoute: 'apiRoutes.qsetupagione.contractLines',
+              select: { 'label': 'fullName', 'id': 'id' },
+              requestParams: { filter: { contractId: this.crudInfo.contractId } },
+            },
+            props: {
+              label: 'Contract Line',
+              'clearable': true,
+              readonly: !this.crudInfo.contractId,
+              rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
+            },
           },
           productId: {
-              value: null,
-              type: 'select',
-              props: {
-                  label: 'Product',
-                  'clearable': true,
-                  readonly: !this.crudInfo.contractLineId,
-                  rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
-                  options: this.productList
-              },
+            value: null,
+            type: 'select',
+            props: {
+              label: 'Product',
+              'clearable': true,
+              readonly: !this.crudInfo.contractLineId,
+              rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
+              options: this.productList
+            },
           },
           aircraftTypes: {
             value: [],
@@ -264,7 +270,7 @@ export default {
             },
             loadOptions: {
               apiRoute: 'apiRoutes.qfly.aircraftTypes',
-              select: {label: 'fullNameWithType', id: 'id'},
+              select: { label: 'fullNameWithType', id: 'id' },
             },
           },
           operationTypes: {
@@ -279,8 +285,8 @@ export default {
             },
             loadOptions: {
               apiRoute: 'apiRoutes.qramp.operationTypes',
-              select: {label: 'operationName', id: 'id'},
-              requestParams: { filter: { company: COMPANY_PASSENGER }},
+              select: { label: 'operationName', id: 'id' },
+              requestParams: { filter: { company: COMPANY_PASSENGER } },
             }
           },
           delay: {
@@ -289,8 +295,8 @@ export default {
             props: {
               label: 'Delay',
               options: [
-                {label: 'Yes', value: true},
-                {label: 'No', value: false},
+                { label: 'Yes', value: true },
+                { label: 'No', value: false },
               ],
             },
           },
@@ -300,10 +306,10 @@ export default {
             props: {
               label: 'Cancellation type',
               clearable: true,
-              color:"primary",
+              color: "primary",
               options: [
-                {label: 'Cancelled Flight', value: 'cancelledFlight'},
-                {label: 'Cancelled Flight W/Services', value: 'cancelledFlightWServices'}
+                { label: 'Cancelled Flight', value: 'cancelledFlight' },
+                { label: 'Cancelled Flight W/Services', value: 'cancelledFlightWServices' }
               ]
             },
           },
@@ -313,14 +319,14 @@ export default {
             props: {
               label: 'Value rule',
               clearable: true,
-              color:"primary",
+              color: "primary",
               options: [
-                {label: 'Greater Than', value: 'Greater Than'},
-                {label: 'Greater than or equal', value: 'Greater than or equal'},
-                {label: 'Less than', value: 'Less than'},
-                {label: 'Less than or equal', value: 'Less than or equal'},
-                {label: 'Between', value: 'Between'},
-                {label: 'Equal', value: 'Equal'}
+                { label: 'Greater Than', value: 'Greater Than' },
+                { label: 'Greater than or equal', value: 'Greater than or equal' },
+                { label: 'Less than', value: 'Less than' },
+                { label: 'Less than or equal', value: 'Less than or equal' },
+                { label: 'Between', value: 'Between' },
+                { label: 'Equal', value: 'Equal' }
               ]
             },
           },
@@ -344,11 +350,11 @@ export default {
             props: {
               label: 'Quantity Rule',
               clearable: true,
-              color:"primary",
+              color: "primary",
               options: [
-                {label: 'Equal', value: 'Equal'},
-                {label: 'Surplus', value: 'Surplus'},
-                {label: 'All', value: 'All'},
+                { label: 'Equal', value: 'Equal' },
+                { label: 'Surplus', value: 'Surplus' },
+                { label: 'All', value: 'All' },
               ]
             },
           },
@@ -371,7 +377,10 @@ export default {
   methods: {
     visibleModal(show = false) {
       uploadContractRulesStore.showModal = show
-    }
+    },
+    async getDataTable(refresh) {
+      await this.$refs.crudComponent.getDataTable(refresh);
+    },
   }
 }
 </script>

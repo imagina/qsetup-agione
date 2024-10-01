@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <q-table
       title="Contract Lines"
-      :data="tableData"
+      :rows="tableData"
       :columns="columns"
       row-key="name"
       class="stick-table"

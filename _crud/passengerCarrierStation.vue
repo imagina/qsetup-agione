@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     companies() {
-      const passengerCompanies = this.$store.getters['qsiteApp/getSettingValueByName']('ramp::passengerCompanies') || []
+      const passengerCompanies = this.$getSetting('ramp::passengerCompanies') || []
       return passengerCompanies.length > 0 ? passengerCompanies : COMPANY_PASSENGER;
     },
     crudInfo() {

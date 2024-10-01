@@ -8,9 +8,12 @@
           :disable="disableButton"
           :icon-right="icon"
           no-caps
+          rounded
+          color="secondary"
           :label="cardParams.buttonLabel"
           size="md"
-          />
+          unelevated
+        />
       </div>
     </div>
     <div class="row">
@@ -21,12 +24,12 @@
         </div>
         <div v-if="lastSync" class="text-bold">
           <p>Last Sync: {{ lastSync }}</p>
-        </div>          
+        </div>
         <div  v-if="syncedByName">
           by {{ syncedByName }}
-        </div>  
+        </div>
       </div>
-    </div>   
+    </div>
   </div>
 </template>
 <script>
@@ -38,12 +41,17 @@ export default {
     return {...useSyncCard(props)}
   },
   props: {
-    items: [],
     loading: Boolean,
-    cardParams: {}
+    items: {
+      type: Object,
+      default: () => ({})
+    },
+    cardParams: {
+      type: Object,
+      default: () => ({})
+    }
   }
 }
 </script>
-<style lang="stylus">
+<style lang="scss">
 </style>
-  

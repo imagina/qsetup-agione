@@ -11,18 +11,18 @@
     >
         <div class="tw-flex tw-justify-center">
             <div class="tw-space-y-3 tw-text-center">
-                <q-uploader 
-                    label="Select an Excel file" 
-                    accept=".xls, .xlsx, .xlsm" 
+                <q-uploader
+                    label="Select an Excel file"
+                    accept=".xls, .xlsx, .xlsm"
                     @added="handleFileAdded"
                     hide-upload-btn
                     @removed="removeFile"
                     ref="uploaderFile"
                 />
                 <q-btn
-                    v-if="isFile" 
+                    v-if="isFile"
                     color="primary"
-                    label="Upload" 
+                    label="Upload"
                     icon="fa-light fa-cloud-arrow-up"
                     class="tw-my-4"
                     @click="saveContractRules"
@@ -52,8 +52,8 @@ export default defineComponent({
     components:{
         uploadedRecordsTable,
     },
-    setup() {
-     return {...uploadContractRulesController()}   
+    setup(props, {emit}) {
+     return {...uploadContractRulesController(props, emit)}
     }
 })
 </script>

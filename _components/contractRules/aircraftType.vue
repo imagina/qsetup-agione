@@ -13,15 +13,14 @@
       <div class="full-width q-px-md">
         <q-item-label>
           Aircraft Type Options
-          <q-btn class="q-ml-sm" flat round icon="add" color="primary" @click="addAcTypes()"/>
+          <q-btn class="q-ml-sm" flat round icon="fa-light fa-plus" color="primary" @click="addAcTypes()"/>
         </q-item-label>
 
       </div>
       <div flat class="row">
-        <template v-for="(field,keyField) in aircraftTypesFields">
+        <template v-for="(field,keyField) in aircraftTypesFields" :key="keyField">
           <dynamic-field
               class="col-12 col-md-5 q-pr-sm"
-              :key="keyField"
               :field="field"
               v-model="acTypesList[keyField.includes('acTypes') ? keyField.split('acTypes')[1] : keyField.split('contractLineId')[1]][keyField.includes('contractLineId') ? 'contractLineId' : 'acTypes']"
           />
@@ -30,7 +29,7 @@
               v-if="ifDelButton(field, keyField)"
               style="width: 40px; height:38px"
               class="col-12 btn-stick col-md-1"
-              round icon="delete" flat
+              round icon="fa-light fa-trash-can" flat
               size="12px"
               color="primary"
               @click="delAcType(keyField)"
@@ -42,9 +41,11 @@
   </div>
 </template>
 <script>
+import { eventBus } from 'src/plugins/utils'
+
 export default {
-  beforeDestroy() {
-    this.$root.$off('page.data.refresh')
+  beforeUnmount() {
+    eventBus.off('page.data.refresh')
   },
   props: {
     form: {
@@ -60,6 +61,7 @@ export default {
     },
     contractId: {default: null},
   },
+  emits: ['update:modelValue'],
   components: {},
   watch: {},
   mounted() {
@@ -196,7 +198,7 @@ export default {
             // yay, models are correct
             this.data = this.$clone(this.form)
             this.data.options = {acTypesRules: this.acTypesList}
-            this.$emit('input', this.data)
+            this.$emit('update:modelValue', this.data)
             resolve(success)
           } else {
             // at least one invalid value
@@ -211,5 +213,5 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
+<style lang="scss">
 </style>
