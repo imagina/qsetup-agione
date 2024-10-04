@@ -5,9 +5,8 @@ export default {
   computed: {
     crudData() {
       return {
-        //permission: 'setup.stations.manage',
+        permission: 'setup.areas',
         crudId: this.$uid(),
-        //entityName: config("main.qsetupagione.entityNames.stations"),
         apiRoute: "apiRoutes.qsetupagione.areas",
         read: {
           columns: [
@@ -82,7 +81,7 @@ export default {
                 val => !!val || this.$tr('isite.cms.message.fieldRequired')
               ],
               selectByDefault : true,
-              
+
               label: `*${this.$tr('ifly.cms.form.station')}`,
               clearable: true,
               color:"primary"

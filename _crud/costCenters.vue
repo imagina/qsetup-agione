@@ -7,6 +7,7 @@ export default {
       return {
         crudId: this.$uid(),
         apiRoute: "apiRoutes.qsetupagione.setupCostCenters",
+        permission: 'setup.cost-centers',
         read: {
           columns: [
             {
@@ -149,7 +150,7 @@ export default {
           },
           options: {
             value: null,
-          },                  
+          },
         },
       };
     },
