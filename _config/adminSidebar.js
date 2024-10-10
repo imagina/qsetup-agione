@@ -4,7 +4,7 @@ export default [
     title: 'isetup.cms.sidebar.setupInfo',
     icon: 'fal fa-landmark',
     children: [
-      pages.qsetupagione.areas,  
+      pages.qsetupagione.areas,
       pages.qramp.attributes,
       pages.qsetupagione.buildings,
       pages.qsetupagione.companies,
@@ -19,6 +19,7 @@ export default [
       pages.qramp.services,
       pages.qsetupagione.stations,
       pages.qramp.workOrderStatuses,
+      pages.qramp.operationType
     ]
   },
 ]

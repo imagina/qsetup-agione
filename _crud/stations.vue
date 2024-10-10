@@ -43,13 +43,33 @@ export default {
               align: "left",
             },
           ],
-          requestParams: {include: 'airport'},
+          requestParams: {include: 'airport,companies'},
+          filters: {
+            companies: {
+              value: [],
+              type: 'select',
+              props: {
+                rules: [
+                  val => !!val || this.$tr('isite.cms.message.fieldRequired')
+                ],
+                label: 'Company',
+                clearable: true,
+                multiple: true,
+              },
+              loadOptions: {
+                apiRoute: 'apiRoutes.qsetupagione.setupCompanies',
+                select: {label: 'companyName', id: 'id'},
+                requestParams: {filter: {}}
+              }
+            }
+          }
         },
         create: {
           title: 'Create station'
         },
         update: {
-          title: 'Update station'
+          title: 'Update station',
+          requestParams: {include: 'airport,companies'},
         },
         delete: true,
         formLeft: {
@@ -98,14 +118,16 @@ export default {
               config: {options: {label: 'airportName', value: 'id'}},
             },
           },
-          companyId: {
-            value: null,
+          companies: {
+            value: [],
             type: 'select',
             props: {
               rules: [
                 val => !!val || this.$tr('isite.cms.message.fieldRequired')
               ],
               label: 'Company',
+              multiple: true,
+              useChips: true,
               clearable: true,
             },
             loadOptions: {
