@@ -352,10 +352,10 @@ export default {
               clearable: true,
               color: "primary",
               options: [
-                { label: 'Equal', value: 'Equal' },
-                { label: 'Surplus', value: 'Surplus' },
-                { label: 'All', value: 'All' },
-                { label: 'Minimum', value: 'Minimum'}
+                { label: 'Equal', value: 'equal' },
+                { label: 'Surplus', value: 'surplus' },
+                { label: 'All', value: 'all' },
+                { label: 'Minimum', value: 'minimum'}
               ]
             },
           },
