@@ -355,6 +355,7 @@ export default {
                 { label: 'Equal', value: 'Equal' },
                 { label: 'Surplus', value: 'Surplus' },
                 { label: 'All', value: 'All' },
+                { label: 'Minimum', value: 'Minimum'}
               ]
             },
           },
