@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-12 text-center q-pa-md">
         <div v-if="disableButton">
-          <q-icon name="warning" color="warning" size="sm" />
+          <q-icon name="fa-solid fa-triangle-exclamation" color="warning" size="sm" />
           <p>We are working on the sync, we'll notify you when finished</p>
         </div>
         <div v-if="lastSync" class="text-bold">
