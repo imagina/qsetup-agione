@@ -26,6 +26,7 @@ export default {
       return {
         crudId: this.crudId,
         apiRoute: "apiRoutes.qsetupagione.passengerCarrierStations",
+        permission: 'setup.passenger-carrier-stations',
         read: {
           columns: [
             {

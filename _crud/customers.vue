@@ -14,6 +14,7 @@ export default {
       return {
         crudId: this.$uid(),
         apiRoute: "apiRoutes.qsetupagione.setupCustomers",
+        permission: 'setup.customers',
         read: {
           columns: [
             {
@@ -149,7 +150,7 @@ export default {
         formLeft: {
           id: {
             value: null,
-          }, 
+          },
           customerName: {
             name: "customerName",
             value: "",

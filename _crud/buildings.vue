@@ -5,7 +5,7 @@ export default {
   computed: {
     crudData() {
       return {
-        //permission: 'setup.buildings.manage',
+        permission: 'setup.buildings',
         crudId: this.$uid(),
         //entityName: config("main.qsetupagione.entityNames.buildings"),
         apiRoute: "apiRoutes.qsetupagione.setupBuildings",
@@ -137,7 +137,7 @@ export default {
           },
           options: {
             value: null,
-          },                  
+          },
         },
       };
     },
