@@ -359,6 +359,21 @@ export default {
               ]
             },
           },
+          secondaryContractLineId: {
+            value: null,
+            type: 'select',
+            loadOptions: {
+              apiRoute: 'apiRoutes.qsetupagione.contractLines',
+              select: { 'label': 'fullName', 'id': 'id' },
+              requestParams: { filter: { contractId: this.crudInfo.contractId } },
+            },
+            props: {
+              label: 'Contract Line',
+              'clearable': true,
+              vIf: this.crudInfo.quantityRule === 'minimum',
+              rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
+            },
+          },
           quantity: {
             value: null,
             type: "input",
