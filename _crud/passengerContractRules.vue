@@ -359,6 +359,13 @@ export default {
               ]
             },
           },
+          quantity: {
+            value: null,
+            type: "input",
+            props: {
+              label: 'Quantity',
+            },
+          },
           secondaryContractLineId: {
             value: null,
             type: 'select',
@@ -371,14 +378,6 @@ export default {
               label: 'Contract Line',
               'clearable': true,
               vIf: this.crudInfo.quantityRule === 'minimum',
-              rules: [(val) => !!val || this.$tr("isite.cms.message.fieldRequired")],
-            },
-          },
-          quantity: {
-            value: null,
-            type: "input",
-            props: {
-              label: 'Quantity',
             },
           },
         },
