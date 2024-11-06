@@ -4,6 +4,7 @@
 <script>
 import qSetupStore from '../_store/qSetupStore.js';
 import modalContract from '../_components/modal/index.vue';
+import { avatarComponent } from 'src/modules/qramp/common/avatarComponent'
 
 export default {
   components:{
@@ -28,6 +29,7 @@ export default {
               label: "Customer Name",
               field: "customerName",
               align: "left",
+              format: (val, row) => avatarComponent(row?.logo, val),
             },
             {
               name: "workdayId",
@@ -218,6 +220,13 @@ export default {
               ],
             },
           },
+          logo: {
+            value: null,
+            type: 'image',
+            props: {
+              noOpen: true,
+            }
+          }
         },
       };
     },
