@@ -148,41 +148,60 @@ export default {
           },
           stationId: {
             value: null,
-            type: 'crud',
+            type: 'select',
             props: {
-              crudType: 'select',
-              crudData: import('../_crud/stations'),
-              crudProps: {
-                label: 'Station Name',
-              },
-              config: {
-                options: {label: 'fullName', value: 'id'},
-                requestParams: {filter: {companyId: this.companies }}
-              },
+              label: 'Station Name'
             },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qsetupagione.setupStations',
+              select: { label: 'fullName', id: 'id' },
+              requestParams: {filter: {companyId: this.companies }}
+            }
           },
           airlineId: {
             value: null,
-            type: 'crud',
+            type: 'select',
             props: {
-              crudType: 'select',
-              crudData: import('src/modules/qfly/_crud/airline'),
-              crudProps: {
-                label: 'Airline',
-              },
-              config: {options: {label: 'airlineName', value: 'id'}},
+              label: 'Airline',
             },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qfly.airlines',
+              select: { label: 'airlineName', id: 'id' }
+            }
           },
           codeShares: {
             value: null,
-            type: 'crud',
+            type: 'select',
             props: {
-              crudType: 'select',
-              crudData: import('src/modules/qfly/_crud/airline'),
-              crudProps: {
-                label: 'Code Shares',
-              },
-              config: {options: {label: 'airlineName', value: 'id'}},
+              label: 'Code Shares',
+            },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qfly.airlines',
+              select: { label: 'airlineName', id: 'id' }
+            }
+          },
+          mainCodeshare: {
+            value: false,
+            type: 'select',
+            props: {
+              label: 'Codeshare as main airline',
+              options: [
+                {
+                  label: this.$tr('isite.cms.label.yes'), 
+                  value: true
+                },
+                {
+                  label: this.$tr('isite.cms.label.no'), 
+                  value: false
+                },
+              ]
+            },
+            help: {
+              description: `
+                Adding Codeshare as Main Airline in True means the system is going to prioritize 
+                the Codeshare Airline Code(IATA) in the Flight numbers, If you change this is going 
+                to affect only future flights.
+              `
             },
           },
           separationHours: {
@@ -205,18 +224,22 @@ export default {
               ]
             }
           },
-          restrictedFlights: {
-            value: [],
+          closeByDefault: {
+            value: false,
             type: 'select',
             props: {
-              label: `Restricted Flights`,
-              useInput: true,
-              useChips: true,
-              multiple: true,
-              hideDropdownIcon: true,
-              inputDebounce: "0",
-              newValueMode: "add-unique"
-            },
+              label: 'Close by default', 
+              options: [
+                {
+                  label: this.$tr('isite.cms.label.yes'), 
+                  value: true
+                },
+                {
+                  label: this.$tr('isite.cms.label.no'), 
+                  value: false
+                },
+              ]
+            }
           },
         },
         getDataForm: (formData, type) => {
