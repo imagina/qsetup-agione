@@ -185,6 +185,30 @@ export default {
               config: {options: {label: 'airlineName', value: 'id'}},
             },
           },
+          mainCodeshare: {
+            value: false,
+            type: 'select',
+            props: {
+              label: 'Codeshare as main airline',
+              options: [
+                {
+                  label: this.$tr('isite.cms.label.yes'), 
+                  value: true
+                },
+                {
+                  label: this.$tr('isite.cms.label.no'), 
+                  value: false
+                },
+              ]
+            },
+            help: {
+              description: `
+                Adding Codeshare as Main Airline in True means the system is going to prioritize 
+                the Codeshare Airline Code(IATA) in the Flight numbers, If you change this is going 
+                to affect only future flights.
+              `
+            },
+          },
           separationHours: {
             value: null,
             type: 'input',
@@ -205,18 +229,22 @@ export default {
               ]
             }
           },
-          restrictedFlights: {
-            value: [],
+          closeByDefault: {
+            value: false,
             type: 'select',
             props: {
-              label: `Restricted Flights`,
-              useInput: true,
-              useChips: true,
-              multiple: true,
-              hideDropdownIcon: true,
-              inputDebounce: "0",
-              newValueMode: "add-unique"
-            },
+              label: 'Close by default', 
+              options: [
+                {
+                  label: this.$tr('isite.cms.label.yes'), 
+                  value: true
+                },
+                {
+                  label: this.$tr('isite.cms.label.no'), 
+                  value: false
+                },
+              ]
+            }
           },
         },
         getDataForm: (formData, type) => {
