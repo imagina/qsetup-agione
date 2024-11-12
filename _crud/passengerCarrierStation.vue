@@ -148,42 +148,37 @@ export default {
           },
           stationId: {
             value: null,
-            type: 'crud',
+            type: 'select',
             props: {
-              crudType: 'select',
-              crudData: import('../_crud/stations'),
-              crudProps: {
-                label: 'Station Name',
-              },
-              config: {
-                options: {label: 'fullName', value: 'id'},
-                requestParams: {filter: {companyId: this.companies }}
-              },
+              label: 'Station Name'
             },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qsetupagione.setupStations',
+              select: { label: 'fullName', id: 'id' },
+              requestParams: {filter: {companyId: this.companies }}
+            }
           },
           airlineId: {
             value: null,
-            type: 'crud',
+            type: 'select',
             props: {
-              crudType: 'select',
-              crudData: import('src/modules/qfly/_crud/airline'),
-              crudProps: {
-                label: 'Airline',
-              },
-              config: {options: {label: 'airlineName', value: 'id'}},
+              label: 'Airline',
             },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qfly.airlines',
+              select: { label: 'airlineName', id: 'id' }
+            }
           },
           codeShares: {
             value: null,
-            type: 'crud',
+            type: 'select',
             props: {
-              crudType: 'select',
-              crudData: import('src/modules/qfly/_crud/airline'),
-              crudProps: {
-                label: 'Code Shares',
-              },
-              config: {options: {label: 'airlineName', value: 'id'}},
+              label: 'Code Shares',
             },
+            loadOptions: {
+              apiRoute: 'apiRoutes.qfly.airlines',
+              select: { label: 'airlineName', id: 'id' }
+            }
           },
           mainCodeshare: {
             value: false,
