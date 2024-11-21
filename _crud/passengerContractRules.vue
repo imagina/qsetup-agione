@@ -326,7 +326,8 @@ export default {
                 { label: 'Less than', value: 'Less than' },
                 { label: 'Less than or equal', value: 'Less than or equal' },
                 { label: 'Between', value: 'Between' },
-                { label: 'Equal', value: 'Equal' }
+                { label: 'Equal', value: 'Equal' },
+                { label: 'Minimum', value: 'minimum'}
               ]
             },
           },
@@ -355,7 +356,6 @@ export default {
                 { label: 'Equal', value: 'equal' },
                 { label: 'Surplus', value: 'surplus' },
                 { label: 'All', value: 'all' },
-                { label: 'Minimum', value: 'minimum'}
               ]
             },
           },
@@ -377,7 +377,7 @@ export default {
             props: {
               label: 'Contract Line',
               'clearable': true,
-              vIf: this.crudInfo.quantityRule === 'minimum',
+              vIf: this.crudInfo.quantityRule === 'surplus',
             },
           },
         },
