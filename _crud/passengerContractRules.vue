@@ -391,7 +391,6 @@ export default {
       return this.$store.state.qcrudComponent.component[this.crudId] || {}
     },
     getLabel() {
-      console.log(this.crudInfo.valueRule)
       if(this.crudInfo.valueRule === 'Flat Rate') {
         return {valueFrom: 'Maximum', valueTo: 'Flat rate value'}
       }
