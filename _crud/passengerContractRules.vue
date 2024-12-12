@@ -392,10 +392,13 @@ export default {
     },
     getLabel() {
       if(this.crudInfo.valueRule === 'Flat Rate') {
-        return {valueFrom: 'Maximum', valueTo: 'Flat rate value'}
+        return {valueFrom: 'Quantity', valueTo: 'Flat rate value'}
       }
       if(this.crudInfo.valueRule === 'minimum') {
-        return {valueFrom: 'Minimum value', valueTo: 'Value to'}
+        return {valueFrom: 'Quantity', valueTo: 'Value to'}
+      }
+      if(this.crudInfo.valueRule === 'Less than') {
+        return {valueFrom: 'Less Than Quantity', valueTo: 'Value to'}
       }
       if(this.crudInfo.valueRule === 'Between') {
         return {valueFrom: 'Value from', valueTo: 'Value to'}
