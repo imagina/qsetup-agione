@@ -327,7 +327,8 @@ export default {
                 { label: 'Less than or equal', value: 'Less than or equal' },
                 { label: 'Between', value: 'Between' },
                 { label: 'Equal', value: 'Equal' },
-                { label: 'Minimum', value: 'minimum'}
+                { label: 'Minimum', value: 'minimum'},
+                { label: 'Flat Rate', value: 'Flat Rate'}
               ]
             },
           },
@@ -335,14 +336,15 @@ export default {
             value: null,
             type: "input",
             props: {
-              label: 'Value from',
+              label: this.getLabel.valueFrom,
             },
           },
           valueTo: {
             value: null,
             type: "input",
             props: {
-              label: 'Value to',
+              vIf: this.crudInfo.valueRule === 'Between' || this.crudInfo.valueRule === 'Flat Rate',
+              label: this.getLabel.valueTo,
             },
           },
           quantityRule: {
@@ -387,7 +389,22 @@ export default {
     //Crud info
     crudInfo() {
       return this.$store.state.qcrudComponent.component[this.crudId] || {}
-    }
+    },
+    getLabel() {
+      if(this.crudInfo.valueRule === 'Flat Rate') {
+        return {valueFrom: 'Quantity', valueTo: 'Flat rate value'}
+      }
+      if(this.crudInfo.valueRule === 'minimum') {
+        return {valueFrom: 'Quantity', valueTo: 'Value to'}
+      }
+      if(this.crudInfo.valueRule === 'Less than') {
+        return {valueFrom: 'Less Than Quantity', valueTo: 'Value to'}
+      }
+      if(this.crudInfo.valueRule === 'Between') {
+        return {valueFrom: 'Value from', valueTo: 'Value to'}
+      }
+      return {valueFrom: 'Value from', valueTo: 'Value to'}
+    },
   },
   methods: {
     visibleModal(show = false) {
