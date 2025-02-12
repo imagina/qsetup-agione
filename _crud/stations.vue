@@ -10,6 +10,7 @@ export default {
         //entityName: config("main.qsetupagione.entityNames.stations"),
         apiRoute: "apiRoutes.qsetupagione.setupStations",
         permission: 'setup.stations',
+        extraFormFields: 'Setup.crud-fields.stations',
         read: {
           columns: [
             {
@@ -115,6 +116,7 @@ export default {
             }
           }
         },
+          formRight: {}
       };
     },
   },
